@@ -2,162 +2,111 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SkyNet | رصدخانه آنلاین</title>
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Estedad/Estedad.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تلسکوپ رباتیک آنلاین - SkyNet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-    }
-
     body {
-      font-family: 'Estedad', 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 2rem;
-      direction: rtl;
+      margin: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #f0f0f0;
+      line-height: 1.8;
     }
-
     header {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 3rem;
-      border-bottom: 2px solid #1db954;
-      padding-bottom: 10px;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      cursor: default;
-      user-select: none;
-    }
-
-    nav button {
-      background: transparent;
-      border: 2px solid #1db954;
-      color: #1db954;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      user-select: none;
-    }
-
-    nav button:hover {
-      background: #1db954;
-      color: #0f2027;
-    }
-
-    main {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(255 255 255 / 0.05);
-      padding: 2rem 3rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgb(29 185 84 / 0.3);
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1.5rem;
       text-align: center;
-      min-height: 300px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #00bcd4;
     }
-
-    main h2 {
-      font-size: 2rem;
+    section {
+      padding: 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    h2 {
+      color: #00e5ff;
       margin-bottom: 1rem;
-      font-weight: 700;
-      color: #1db954;
     }
-
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #ccc;
-      user-select: text;
+    .roadmap {
+      background: #1c313a;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 2rem 0;
     }
-
-    footer {
-      margin-top: 3rem;
-      color: #555;
-      font-size: 0.9rem;
-      user-select: none;
+    form {
+      background-color: #102027;
+      padding: 1rem;
+      border-radius: 10px;
     }
-
-    /* Language LTR adjustments */
-    html[lang="en"] {
-      direction: ltr;
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
     }
-
-    html[lang="en"] body {
-      font-family: 'Montserrat', 'Estedad', sans-serif;
-    }
-
-    html[lang="en"] header {
-      flex-direction: row-reverse;
-    }
-
-    html[lang="en"] main {
-      text-align: left;
+    button {
+      background-color: #00bcd4;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1 id="title">SkyNet | رصدخانه آنلاین</h1>
-    <nav>
-      <button id="langToggle">EN</button>
-    </nav>
+    تلسکوپ رباتیک آنلاین SkyNet - آسمان در دستان تو
   </header>
 
-  <main>
-    <h2 id="subtitle">رصدخانه‌ای برای همه؛ آسمان در دستان تو!</h2>
-    <p id="description">
-      پروژه SkyNet با هدف ایجاد یک رصدخانه آنلاین پیشرفته است که به کاربران در سراسر جهان امکان کنترل از راه دور تلسکوپ‌ها را می‌دهد، حتی اگر محدودیت مکانی و تجهیزات داشته باشند.
+  <section>
+    <h2>معرفی پروژه</h2>
+    <p>
+      به دنیای شگفت‌انگیز تلسکوپ‌های رباتیک خوش آمدید. این ابزارهای قرن ۲۱ بدون نیاز به حضور فیزیکی انسان و با استفاده از اینترنت، امکان رصد و پژوهش نجومی را در هر لحظه از شبانه‌روز فراهم می‌کنند.
     </p>
-  </main>
+  </section>
 
-  <footer>
-    © 2025 SkyNet Project - All rights reserved
-  </footer>
+  <section>
+    <h2>تلسکوپ رباتیک چیست؟</h2>
+    <p>
+      این سامانه‌ها با بهره‌گیری از هوش مصنوعی و نرم‌افزارهای پیشرفته، بدون نیاز به اپراتور حضوری عمل می‌کنند. کاربران از هر نقطه جهان می‌توانند اهداف نجومی را انتخاب کرده و به‌صورت خودکار تصاویر را دریافت کنند.
+    </p>
+  </section>
 
-  <script>
-    const langToggleBtn = document.getElementById('langToggle');
-    const titleEl = document.getElementById('title');
-    const subtitleEl = document.getElementById('subtitle');
-    const descriptionEl = document.getElementById('description');
+  <section>
+    <h2>نحوه عملکرد</h2>
+    <ul>
+      <li>📷 تجهیز تلسکوپ به دوربین‌های CCD و حسگرهای جوی</li>
+      <li>🧑‍💻 انتخاب هدف، زمان نوردهی و فیلتر توسط کاربر</li>
+      <li>🤖 ثبت خودکار تصاویر توسط سیستم</li>
+      <li>📩 ارسال نتایج به ایمیل کاربر</li>
+    </ul>
+  </section>
 
-    let isFarsi = true;
+  <section>
+    <h2>نقشه راه پروژه</h2>
+    <div class="roadmap">
+      <ul>
+        <li>✅ مرحله اول: توسعه نسخه اولیه سایت و رزرو زمان رصد</li>
+        <li>🚧 مرحله دوم: اتصال سخت‌افزار واقعی به وب</li>
+        <li>🔭 مرحله سوم: راه‌اندازی سامانه ثبت‌نام و اعتبارسنجی کاربران</li>
+        <li>🌍 مرحله چهارم: چندزبانه‌سازی و تعامل با مدارس و پژوهش‌سراها</li>
+      </ul>
+    </div>
+  </section>
 
-    langToggleBtn.addEventListener('click', () => {
-      isFarsi = !isFarsi;
-      if (isFarsi) {
-        document.documentElement.lang = 'fa';
-        document.documentElement.dir = 'rtl';
-        titleEl.textContent = 'SkyNet | رصدخانه آنلاین';
-        subtitleEl.textContent = 'رصدخانه‌ای برای همه؛ آسمان در دستان تو!';
-        descriptionEl.textContent = 'پروژه SkyNet با هدف ایجاد یک رصدخانه آنلاین پیشرفته است که به کاربران در سراسر جهان امکان کنترل از راه دور تلسکوپ‌ها را می‌دهد، حتی اگر محدودیت مکانی و تجهیزات داشته باشند.';
-        langToggleBtn.textContent = 'EN';
-      } else {
-        document.documentElement.lang = 'en';
-        document.documentElement.dir = 'ltr';
-        titleEl.textContent = 'SkyNet | Online Observatory';
-        subtitleEl.textContent = 'An Observatory for All — The Sky in Your Hands!';
-        descriptionEl.textContent = 'The SkyNet project aims to create an advanced online observatory that allows users worldwide to remotely control telescopes, even if they have location or equipment limitations.';
-        langToggleBtn.textContent = 'فارسی';
-      }
-    });
-  </script>
+  <section>
+    <h2>تماس با ما</h2>
+    <form action="contact.php" method="POST">
+      <input type="text" name="name" placeholder="نام شما" required>
+      <input type="email" name="email" placeholder="ایمیل شما" required>
+      <textarea name="message" rows="5" placeholder="پیام شما" required></textarea>
+      <button type="submit">ارسال</button>
+    </form>
+  </section>
+
 </body>
 </html>
