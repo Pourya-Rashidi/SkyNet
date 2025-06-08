@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkyNet | Online Robotic Telescope</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
@@ -21,10 +17,25 @@
     header {
       text-align: center;
       margin-bottom: 40px;
+      position: relative;
     }
     header h1 {
       font-size: 2.8rem;
       color: #00ffff;
+    }
+    #language-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    #language-toggle button {
+      padding: 5px 10px;
+      background-color: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
     section {
       max-width: 900px;
@@ -35,13 +46,8 @@
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
       margin-bottom: 40px;
     }
-    h2 {
-      color: #00e0ff;
-      margin-bottom: 10px;
-    }
-    p {
-      margin-bottom: 15px;
-    }
+    h2 { color: #00e0ff; margin-bottom: 10px; }
+    p { margin-bottom: 15px; }
     form {
       display: flex;
       flex-direction: column;
@@ -54,7 +60,7 @@
       font-family: inherit;
       font-size: 1rem;
     }
-    button {
+    button[type="submit"] {
       margin-top: 15px;
       padding: 10px 20px;
       background-color: #00e0ff;
@@ -65,7 +71,7 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-    button:hover {
+    button[type="submit"]:hover {
       background-color: #00bcd4;
     }
     footer {
@@ -78,45 +84,80 @@
 </head>
 <body>
   <header>
-    <h1>Online Robotic Telescope</h1>
-    <p>Revolutionizing Astronomy</p>
+    <div id="language-toggle">
+      <button onclick="toggleLanguage()">فارسی</button>
+    </div>
+    <h1 id="main-title">Online Robotic Telescope</h1>
+    <p id="subtitle">Revolutionizing Astronomy</p>
   </header>
 
   <section>
-    <h2>Welcome</h2>
-    <p>Welcome to the fascinating world of online robotic telescopes. These 21st-century marvels operate via the internet, enabling remote astronomical research and education with 24/7 global accessibility.</p>
+    <h2 id="welcome-title">Welcome</h2>
+    <p id="welcome-text">Welcome to the fascinating world of online robotic telescopes. These 21st-century marvels operate via the internet, enabling remote astronomical research and education with 24/7 global accessibility.</p>
   </section>
 
   <section>
-    <h2>What is an Online Robotic Telescope?</h2>
-    <p>These advanced systems operate without on-site humans. They're controlled via web interfaces from anywhere in the world.</p>
-    <p>Modern robotic telescopes leverage AI and sophisticated software. This technology handles complex scheduling and target selection automatically.</p>
+    <h2 id="what-title">What is an Online Robotic Telescope?</h2>
+    <p id="what-text1">These advanced systems operate without on-site humans. They're controlled via web interfaces from anywhere in the world.</p>
+    <p id="what-text2">Modern robotic telescopes leverage AI and sophisticated software. This technology handles complex scheduling and target selection automatically.</p>
   </section>
 
   <section>
-    <h2>Contact Us</h2>
+    <h2 id="contact-title">Contact Us</h2>
     <form action="https://formspree.io/f/mqabpkob" method="POST">
       <label>
-        Your Name:
+        <span id="name-label">Your Name:</span>
         <input type="text" name="name" required>
-      </label>
-      <br><br>
+      </label><br>
       <label>
-        Your Email:
+        <span id="email-label">Your Email:</span>
         <input type="email" name="email" required>
-      </label>
-      <br><br>
+      </label><br>
       <label>
-        Message:
+        <span id="message-label">Message:</span>
         <textarea name="message" rows="5" required></textarea>
-      </label>
-      <br><br>
-      <button type="submit">Send</button>
+      </label><br>
+      <button type="submit" id="send-button">Send</button>
     </form>
   </section>
 
   <footer>
     &copy; 2025 SkyNet Project | All rights reserved.
   </footer>
+
+  <script>
+    let isEnglish = true;
+
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+
+      document.documentElement.lang = isEnglish ? 'en' : 'fa';
+      document.documentElement.dir = isEnglish ? 'ltr' : 'rtl';
+
+      document.getElementById('main-title').textContent = isEnglish ? 'Online Robotic Telescope' : 'تلسکوپ رباتیک آنلاین';
+      document.getElementById('subtitle').textContent = isEnglish ? 'Revolutionizing Astronomy' : 'انقلابی در نجوم';
+
+      document.getElementById('welcome-title').textContent = isEnglish ? 'Welcome' : 'خوش آمدید';
+      document.getElementById('welcome-text').textContent = isEnglish
+        ? 'Welcome to the fascinating world of online robotic telescopes. These 21st-century marvels operate via the internet, enabling remote astronomical research and education with 24/7 global accessibility.'
+        : 'به دنیای شگفت‌انگیز تلسکوپ‌های رباتیک آنلاین خوش آمدید. این شاهکارهای قرن بیست‌ویکمی از طریق اینترنت کار می‌کنند و امکان پژوهش و آموزش نجومی را به‌صورت ۲۴ ساعته و از هر جای جهان فراهم می‌سازند.';
+
+      document.getElementById('what-title').textContent = isEnglish ? 'What is an Online Robotic Telescope?' : 'تلسکوپ رباتیک آنلاین چیست؟';
+      document.getElementById('what-text1').textContent = isEnglish
+        ? "These advanced systems operate without on-site humans. They're controlled via web interfaces from anywhere in the world."
+        : 'این سامانه‌های پیشرفته بدون نیاز به حضور فیزیکی انسان‌ها کار می‌کنند و از طریق رابط‌های وب از هر جای دنیا کنترل می‌شوند.';
+      document.getElementById('what-text2').textContent = isEnglish
+        ? 'Modern robotic telescopes leverage AI and sophisticated software. This technology handles complex scheduling and target selection automatically.'
+        : 'تلسکوپ‌های مدرن از هوش مصنوعی و نرم‌افزارهای پیشرفته استفاده می‌کنند تا برنامه‌ریزی پیچیده و انتخاب اهداف را به‌صورت خودکار انجام دهند.';
+
+      document.getElementById('contact-title').textContent = isEnglish ? 'Contact Us' : 'تماس با ما';
+      document.getElementById('name-label').textContent = isEnglish ? 'Your Name:' : 'نام شما:';
+      document.getElementById('email-label').textContent = isEnglish ? 'Your Email:' : 'ایمیل شما:';
+      document.getElementById('message-label').textContent = isEnglish ? 'Message:' : 'پیام:';
+      document.getElementById('send-button').textContent = isEnglish ? 'Send' : 'ارسال';
+
+      document.querySelector('#language-toggle button').textContent = isEnglish ? 'فارسی' : 'ENGLISH';
+    }
+  </script>
 </body>
 </html>
