@@ -1,95 +1,163 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SkyNet | رصدخانه آنلاین</title>
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Estedad/Estedad.css" rel="stylesheet">
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Estedad/Estedad.css" rel="stylesheet" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: all 0.3s ease;
     }
 
     body {
-      font-family: 'Estedad', sans-serif;
-      background: linear-gradient(135deg, #000428, #004e92);
+      font-family: 'Estedad', 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      justify-content: flex-start;
       padding: 2rem;
+      direction: rtl;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    header {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      border-bottom: 2px solid #1db954;
+      padding-bottom: 10px;
     }
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      cursor: default;
+      user-select: none;
     }
 
-    .lang-toggle {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-    }
-
-    .lang-toggle button {
-      padding: 0.5rem 1rem;
-      background-color: #ffffff33;
-      color: #fff;
-      border: 1px solid #fff;
-      border-radius: 8px;
+    nav button {
+      background: transparent;
+      border: 2px solid #1db954;
+      color: #1db954;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 30px;
       cursor: pointer;
-      font-family: inherit;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    nav button:hover {
+      background: #1db954;
+      color: #0f2027;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(255 255 255 / 0.05);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgb(29 185 84 / 0.3);
+      text-align: center;
+      min-height: 300px;
+    }
+
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #1db954;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ccc;
+      user-select: text;
     }
 
     footer {
-      position: absolute;
-      bottom: 1rem;
+      margin-top: 3rem;
+      color: #555;
       font-size: 0.9rem;
-      color: #ccc;
+      user-select: none;
+    }
+
+    /* Language LTR adjustments */
+    html[lang="en"] {
+      direction: ltr;
+    }
+
+    html[lang="en"] body {
+      font-family: 'Montserrat', 'Estedad', sans-serif;
+    }
+
+    html[lang="en"] header {
+      flex-direction: row-reverse;
+    }
+
+    html[lang="en"] main {
+      text-align: left;
     }
   </style>
 </head>
 <body>
-  <div class="lang-toggle">
-    <button onclick="toggleLanguage()">ENGLISH</button>
-  </div>
-  <h1 id="title">SkyNet | رصدخانه آنلاین</h1>
-  <h2 id="subtitle">رصدخانه‌ای برای همه؛ آسمان در دستان تو!</h2>
+  <header>
+    <h1 id="title">SkyNet | رصدخانه آنلاین</h1>
+    <nav>
+      <button id="langToggle">EN</button>
+    </nav>
+  </header>
 
-  <footer>© 2025 SkyNet Project - All rights reserved</footer>
+  <main>
+    <h2 id="subtitle">رصدخانه‌ای برای همه؛ آسمان در دستان تو!</h2>
+    <p id="description">
+      پروژه SkyNet با هدف ایجاد یک رصدخانه آنلاین پیشرفته است که به کاربران در سراسر جهان امکان کنترل از راه دور تلسکوپ‌ها را می‌دهد، حتی اگر محدودیت مکانی و تجهیزات داشته باشند.
+    </p>
+  </main>
+
+  <footer>
+    © 2025 SkyNet Project - All rights reserved
+  </footer>
 
   <script>
-    const title = document.getElementById('title');
-    const subtitle = document.getElementById('subtitle');
-    const button = document.querySelector('button');
+    const langToggleBtn = document.getElementById('langToggle');
+    const titleEl = document.getElementById('title');
+    const subtitleEl = document.getElementById('subtitle');
+    const descriptionEl = document.getElementById('description');
+
     let isFarsi = true;
 
-    function toggleLanguage() {
+    langToggleBtn.addEventListener('click', () => {
       isFarsi = !isFarsi;
       if (isFarsi) {
         document.documentElement.lang = 'fa';
         document.documentElement.dir = 'rtl';
-        title.textContent = 'SkyNet | رصدخانه آنلاین';
-        subtitle.textContent = 'رصدخانه‌ای برای همه؛ آسمان در دستان تو!';
-        button.textContent = 'ENGLISH';
+        titleEl.textContent = 'SkyNet | رصدخانه آنلاین';
+        subtitleEl.textContent = 'رصدخانه‌ای برای همه؛ آسمان در دستان تو!';
+        descriptionEl.textContent = 'پروژه SkyNet با هدف ایجاد یک رصدخانه آنلاین پیشرفته است که به کاربران در سراسر جهان امکان کنترل از راه دور تلسکوپ‌ها را می‌دهد، حتی اگر محدودیت مکانی و تجهیزات داشته باشند.';
+        langToggleBtn.textContent = 'EN';
       } else {
         document.documentElement.lang = 'en';
         document.documentElement.dir = 'ltr';
-        title.textContent = 'SkyNet | Online Observatory';
-        subtitle.textContent = 'An Observatory for All — The Sky in Your Hands!';
-        button.textContent = 'فارسی';
+        titleEl.textContent = 'SkyNet | Online Observatory';
+        subtitleEl.textContent = 'An Observatory for All — The Sky in Your Hands!';
+        descriptionEl.textContent = 'The SkyNet project aims to create an advanced online observatory that allows users worldwide to remotely control telescopes, even if they have location or equipment limitations.';
+        langToggleBtn.textContent = 'فارسی';
       }
-    }
+    });
   </script>
 </body>
 </html>
