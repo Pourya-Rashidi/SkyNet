@@ -1,1 +1,184 @@
 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyNet | Online Robotic Telescope</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Orbitron', 'Vazirmatn', sans-serif;
+      background: url('https://drive.google.com/file/d/1pYy01lQk9YrybUjykwBk7s1-cD7jIDv5/view?usp=sharing?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0f0f0;
+      line-height: 1.8;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #00ffff;
+    }
+    #language-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    #language-toggle button {
+      padding: 6px 12px;
+      background-color: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    section {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #00e0ff;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    p {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea {
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #00bcd4;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="language-toggle">
+      <button onclick="toggleLanguage()">فارسی</button>
+    </div>
+    <h1 id="main-title">Online Robotic Telescope</h1>
+    <p id="subtitle">Revolutionizing Astronomy</p>
+  </header>
+
+  <section>
+    <h2 id="usecases-title">Use Cases</h2>
+    <ul id="usecases-list">
+      <li>Student and university research projects</li>
+      <li>STEM education for schools</li>
+      <li>Global public outreach events</li>
+      <li>Citizen science and amateur astronomer collaboration</li>
+      <li>Monitoring of asteroids, satellites, and near-Earth objects</li>
+      <li>Deep sky object imaging for enthusiasts</li>
+      <li>Time-lapse sky surveys and variable star studies</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 id="roadmap-title">Membership & Access</h2>
+    <p id="roadmap-text">SkyNet will adopt a token-based system for membership and telescope time allocation. Supporters, researchers, and educational partners can obtain access by staking or acquiring tokens. Token holders will enjoy:</p>
+    <ul>
+      <li>Priority scheduling for observations</li>
+      <li>Voting on future telescope installations</li>
+      <li>Exclusive educational resources and workshops</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 id="contact-title">Contact Us</h2>
+    <form action="https://formspree.io/f/mqabpkob" method="POST">
+      <label for="name" id="label-name">Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email" id="label-email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="message" id="label-message">Message</label>
+      <textarea name="message" id="message" rows="5" required></textarea>
+
+      <button type="submit" id="submit-button">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 SkyNet Project | All rights reserved.<br>
+    Made with ❤️ by <a href="https://github.com/mhsalimi/skynet" target="_blank" style="color:#00e0ff;text-decoration:underline;">SkyNet on GitHub</a>
+  </footer>
+
+  <script>
+    let isEnglish = true;
+
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+
+      document.documentElement.lang = isEnglish ? 'en' : 'fa';
+      document.documentElement.dir = isEnglish ? 'ltr' : 'rtl';
+
+      document.getElementById('main-title').textContent = isEnglish ? 'Online Robotic Telescope' : 'تلسکوپ رباتیک آنلاین';
+      document.getElementById('subtitle').textContent = isEnglish ? 'Revolutionizing Astronomy' : 'انقلابی در نجوم';
+
+      document.getElementById('usecases-title').textContent = isEnglish ? 'Use Cases' : 'کاربردها';
+      document.getElementById('usecases-list').innerHTML = isEnglish
+        ? `<li>Student and university research projects</li><li>STEM education for schools</li><li>Global public outreach events</li><li>Citizen science and amateur astronomer collaboration</li><li>Monitoring of asteroids, satellites, and near-Earth objects</li><li>Deep sky object imaging for enthusiasts</li><li>Time-lapse sky surveys and variable star studies</li>`
+        : `<li>پروژه‌های پژوهشی دانش‌آموزی و دانشگاهی</li><li>آموزش STEM برای مدارس</li><li>برگزاری رویدادهای نجومی عمومی جهانی</li><li>همکاری علمی شهروندی و آماتورهای نجوم</li><li>پایش سیارک‌ها، ماهواره‌ها و اجرام نزدیک به زمین</li><li>عکاسی از اجرام اعماق آسمان برای علاقه‌مندان</li><li>مطالعات زمان‌سنجی و بررسی ستارگان متغیر</li>`;
+
+      document.getElementById('roadmap-title').textContent = isEnglish ? 'Membership & Access' : 'عضویت و دسترسی';
+      document.getElementById('roadmap-text').textContent = isEnglish
+        ? 'SkyNet will adopt a token-based system for membership and telescope time allocation. Supporters, researchers, and educational partners can obtain access by staking or acquiring tokens. Token holders will enjoy:'
+        : 'SkyNet از یک سیستم مبتنی بر توکن برای عضویت و تخصیص زمان تلسکوپ استفاده خواهد کرد. پشتیبانان، پژوهشگران و شرکای آموزشی می‌توانند با نگهداری یا دریافت توکن‌ها به امکانات دسترسی یابند. دارندگان توکن از مزایای زیر برخوردار خواهند شد:';
+
+      document.getElementById('contact-title').textContent = isEnglish ? 'Contact Us' : 'تماس با ما';
+      document.getElementById('label-name').textContent = isEnglish ? 'Name' : 'نام';
+      document.getElementById('label-email').textContent = isEnglish ? 'Email' : 'ایمیل';
+      document.getElementById('label-message').textContent = isEnglish ? 'Message' : 'پیام';
+      document.getElementById('submit-button').textContent = isEnglish ? 'Send' : 'ارسال';
+    }
+  </script>
+</body>
+</html>
