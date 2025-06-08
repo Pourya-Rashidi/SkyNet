@@ -129,10 +129,25 @@
     </ul>
   </section>
 
-  <!-- Contact and other existing sections remain unchanged -->
+  <section>
+    <h2 id="contact-title">Contact Us</h2>
+    <form action="https://formspree.io/f/mqabpkob" method="POST">
+      <label for="name" id="label-name">Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email" id="label-email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="message" id="label-message">Message</label>
+      <textarea name="message" id="message" rows="5" required></textarea>
+
+      <button type="submit" id="submit-button">Send</button>
+    </form>
+  </section>
 
   <footer>
-    &copy; 2025 SkyNet Project | All rights reserved.
+    &copy; 2025 SkyNet Project | All rights reserved.<br>
+    Made with ❤️ by <a href="https://github.com/mhsalimi/skynet" target="_blank" style="color:#00e0ff;text-decoration:underline;">SkyNet on GitHub</a>
   </footer>
 
   <script>
@@ -156,6 +171,12 @@
       document.getElementById('roadmap-text').textContent = isEnglish
         ? 'SkyNet will adopt a token-based system for membership and telescope time allocation. Supporters, researchers, and educational partners can obtain access by staking or acquiring tokens. Token holders will enjoy:'
         : 'SkyNet از یک سیستم مبتنی بر توکن برای عضویت و تخصیص زمان تلسکوپ استفاده خواهد کرد. پشتیبانان، پژوهشگران و شرکای آموزشی می‌توانند با نگهداری یا دریافت توکن‌ها به امکانات دسترسی یابند. دارندگان توکن از مزایای زیر برخوردار خواهند شد:';
+
+      document.getElementById('contact-title').textContent = isEnglish ? 'Contact Us' : 'تماس با ما';
+      document.getElementById('label-name').textContent = isEnglish ? 'Name' : 'نام';
+      document.getElementById('label-email').textContent = isEnglish ? 'Email' : 'ایمیل';
+      document.getElementById('label-message').textContent = isEnglish ? 'Message' : 'پیام';
+      document.getElementById('submit-button').textContent = isEnglish ? 'Send' : 'ارسال';
     }
   </script>
 </body>
