@@ -5,6 +5,55 @@
   
 
 
+  <meta charset="UTF-8">
+  <title>ویدئو با پخش خودکار و تکرار</title>
+  <style>
+    .video-wrapper {
+      position: relative;
+      max-width: 800px;
+      margin: 20px auto;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .play-overlay:hover {
+      background: rgba(0,0,0,0.7);
+    }
+    .play-overlay:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+    }
+    .video-wrapper.paused .play-overlay { display: flex; }
+    .video-wrapper.playing .play-overlay { display: none; }
+  </style>
+
+
+	
+
 
 	
   <meta charset='utf-8'>
@@ -51,126 +100,6 @@
     }
   })();
   </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-  <meta charset="UTF-8">
-  <title>ویدئو با پخش خودکار و تکرار</title>
-  <style>
-    .video-wrapper {
-      position: relative;
-      max-width: 800px;
-      margin: 20px auto;
-      background: #000;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .video-wrapper video {
-      width: 100%;
-      display: block;
-    }
-    .play-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .play-overlay:hover {
-      background: rgba(0,0,0,0.7);
-    }
-    .play-overlay:after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      border-left: 20px solid white;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-    }
-    .video-wrapper.paused .play-overlay { display: flex; }
-    .video-wrapper.playing .play-overlay { display: none; }
-  </style>
-</head>
-<body>
-
-<div class="video-wrapper playing" id="vidContainer">
-  <video id="myVideo" autoplay muted loop playsinline poster="https://via.placeholder.com/800x450.png?text=Galaxy+Preview">
-    <source src="https://raw.githubusercontent.com/Pourya-Rashidi/SkyNet/main/solitary-galaxy.mp4" type="video/mp4">
-    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-  </video>
-  <div class="play-overlay"></div>
-</div>
-
-<script>
-  const container = document.getElementById('vidContainer');
-  const video = document.getElementById('myVideo');
-  const overlay = container.querySelector('.play-overlay');
-
-  overlay.addEventListener('click', () => {
-    video.play();
-  });
-
-  video.addEventListener('play', () => {
-    container.classList.add('playing');
-    container.classList.remove('paused');
-  });
-
-  video.addEventListener('pause', () => {
-    container.classList.add('paused');
-    container.classList.remove('playing');
-  });
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	
   <!-- Globals Definitions -->
@@ -768,7 +697,73 @@
         <path d="M172.37 54.46s9.37-4.35.05-16.25c.01 0-7.93 13.28-.05 16.25z"/>
     </g>
 </svg>
-</div></div><!--/$--><!--$--><div id="comp-ivjcl47n" class="Z_l5lU ku3DBC zQ9jDz qvSjx3 Vq6kJx comp-ivjcl47n wixui-rich-text" data-testid="richTextElement"><h5 class="font_5 wixui-rich-text__text" style="line-height:normal; text-align:center; font-size:21px;"><span style="letter-spacing:0.1em;" class="wixui-rich-text__text"><span class="color_37 wixui-rich-text__text">SkyNet Online Observatory</span></span></h5></div><!--/$--><!--$--><div id="comp-iweooaqa" class="comp-iweooaqa wixui-vector-image"><div data-testid="svgRoot-comp-iweooaqa" class="AKxYR5 VZYmYf comp-iweooaqa"><svg preserveAspectRatio="none" data-bbox="6.972 34.72 184.187 121.52" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="6.972 34.72 184.187 121.52" role=presentation aria-hidden=true>
+
+</div></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="video-wrapper playing" id="vidContainer">
+  <video id="myVideo" autoplay muted loop playsinline poster="https://via.placeholder.com/800x450.png?text=Galaxy+Preview">
+    <source src="https://raw.githubusercontent.com/Pourya-Rashidi/SkyNet/main/solitary-galaxy.mp4" type="video/mp4">
+    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+  </video>
+  <div class="play-overlay"></div>
+</div>
+
+<script>
+  const container = document.getElementById('vidContainer');
+  const video = document.getElementById('myVideo');
+  const overlay = container.querySelector('.play-overlay');
+
+  overlay.addEventListener('click', () => {
+    video.play();
+  });
+
+  video.addEventListener('play', () => {
+    container.classList.add('playing');
+    container.classList.remove('paused');
+  });
+
+  video.addEventListener('pause', () => {
+    container.classList.add('paused');
+    container.classList.remove('playing');
+  });
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--/$--><!--$--><div id="comp-ivjcl47n" class="Z_l5lU ku3DBC zQ9jDz qvSjx3 Vq6kJx comp-ivjcl47n wixui-rich-text" data-testid="richTextElement"><h5 class="font_5 wixui-rich-text__text" style="line-height:normal; text-align:center; font-size:21px;"><span style="letter-spacing:0.1em;" class="wixui-rich-text__text"><span class="color_37 wixui-rich-text__text">SkyNet Online Observatory</span></span></h5></div><!--/$--><!--$--><div id="comp-iweooaqa" class="comp-iweooaqa wixui-vector-image"><div data-testid="svgRoot-comp-iweooaqa" class="AKxYR5 VZYmYf comp-iweooaqa"><svg preserveAspectRatio="none" data-bbox="6.972 34.72 184.187 121.52" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="6.972 34.72 184.187 121.52" role=presentation aria-hidden=true>
     <g>
         <path d="M60.31 145.56c4.36-7-9.39-13.08-9.39-13.08-.34 15.09 9.39 13.08 9.39 13.08z"/>
         <path d="M40.82 150.28c12.24 8.84 16.11-.31 16.11-.31-3.33-7.59-16.11.31-16.11.31z"/>
