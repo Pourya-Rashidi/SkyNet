@@ -978,9 +978,8 @@
 
 	
     
-
-  
-<video id="myVideo" autoplay muted loop playsinline poster="https://via.placeholder.com/800x450.png?text=Galaxy+Preview">
+<div class="video-wrapper playing" id="vidContainer">
+  <video id="myVideo" autoplay muted loop playsinline poster="https://via.placeholder.com/800x450.png?text=Galaxy+Preview">
     <source src="https://raw.githubusercontent.com/Pourya-Rashidi/SkyNet/main/solitary-galaxy.mp4" type="video/mp4">
     مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
   </video>
@@ -1005,3 +1004,5 @@
     container.classList.add('paused');
     container.classList.remove('playing');
   });
+</script>
+
