@@ -2,80 +2,7 @@
 <html lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <title>پلیر ویدیو شبیه Wix</title>
-  <style>
-    .video-wrapper {
-      position: relative;
-      max-width: 800px;
-      margin: 20px auto;
-      background: #000;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .video-wrapper video {
-      width: 100%;
-      display: block;
-    }
-    .play-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .play-overlay:hover {
-      background: rgba(0,0,0,0.7);
-    }
-    .play-overlay:after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      border-left: 20px solid white;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-    }
-    .video-wrapper.paused .play-overlay { display: flex; }
-    .video-wrapper.playing .play-overlay { display: none; }
-  </style>
-
-<div class="video-wrapper paused" id="vidContainer">
-  <video id="myVideo" poster="https://via.placeholder.com/800x450.png?text=Galaxy+Preview">
-    <source src="https://raw.githubusercontent.com/Pourya-Rashidi/SkyNet/main/solitary-galaxy.mp4" type="video/mp4">
-    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-  </video>
-  <div class="play-overlay"></div>
-</div>
-
-<script>
-  const container = document.getElementById('vidContainer');
-  const video = document.getElementById('myVideo');
-  const overlay = container.querySelector('.play-overlay');
-
-  overlay.addEventListener('click', () => {
-    video.play();
-  });
-
-  video.addEventListener('play', () => {
-    container.classList.add('playing');
-    container.classList.remove('paused');
-  });
-
-  video.addEventListener('pause ended', () => {
-    container.classList.add('paused');
-    container.classList.remove('playing');
-  });
-</script>
-
+  
 
 
 
@@ -991,6 +918,80 @@
 
 
 <!-- warmup data start -->
+	<meta charset="UTF-8">
+  <title>پلیر ویدیو شبیه Wix</title>
+  <style>
+    .video-wrapper {
+      position: relative;
+      max-width: 800px;
+      margin: 20px auto;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .play-overlay:hover {
+      background: rgba(0,0,0,0.7);
+    }
+    .play-overlay:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+    }
+    .video-wrapper.paused .play-overlay { display: flex; }
+    .video-wrapper.playing .play-overlay { display: none; }
+  </style>
+
+<div class="video-wrapper paused" id="vidContainer">
+  <video id="myVideo" poster="https://via.placeholder.com/800x450.png?text=Galaxy+Preview">
+    <source src="https://raw.githubusercontent.com/Pourya-Rashidi/SkyNet/main/solitary-galaxy.mp4" type="video/mp4">
+    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+  </video>
+  <div class="play-overlay"></div>
+</div>
+
+<script>
+  const container = document.getElementById('vidContainer');
+  const video = document.getElementById('myVideo');
+  const overlay = container.querySelector('.play-overlay');
+
+  overlay.addEventListener('click', () => {
+    video.play();
+  });
+
+  video.addEventListener('play', () => {
+    container.classList.add('playing');
+    container.classList.remove('paused');
+  });
+
+  video.addEventListener('pause ended', () => {
+    container.classList.add('paused');
+    container.classList.remove('playing');
+  });
+</script>
+
 <!-- warmup data end -->
 
 
