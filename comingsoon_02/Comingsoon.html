@@ -62,27 +62,31 @@
 
 
 
-<form action="https://formsubmit.co/2pourya.rashidi1990@gmail.com" method="POST" class="w-full flex-w flex-c-m">
-  <input type="hidden" name="_subject" value="New Subscriber from Coming Soon Page!">
-  <input type="hidden" name="_template" value="box">
-
-  <div class="wrap-input100 validate-input where1" data-validate = "Valid email is required: ex@abc.xyz">
-    <input class="input100 placeholder0 s2-txt2" type="email" name="email" placeholder="Enter Email Address" required>
+<form class="w-full flex-w flex-c-m validate-form" id="subscribe-form">
+  <div class="wrap-input100 validate-input where1" data-validate="Valid email is required: ex@abc.xyz">
+    <input class="input100 placeholder0 s2-txt2" type="email" name="user_email" placeholder="Enter Email Address" required>
     <span class="focus-input100"></span>
   </div>
 
-  <button class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1">
+  <button class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1" type="submit">
     Subscribe
   </button>
 </form>
+
 			
 		</div>
 	</div>
 
 
 
-	
-
+<!--===============================================================================================-->		
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  // مقداردهی اولیه
+  (function(){
+    emailjs.init("IV9jynXQhxZeWuKEL"); // جایگزین کن با کلید عمومی خودت
+  })();
+</script>
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -137,6 +141,21 @@
 		})
 	</script>
 <!--===============================================================================================-->
+	<script>
+  document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('service_58nctaw', 'template_80h9xwj', this)
+      .then(function() {
+        alert('✅ ایمیل با موفقیت ارسال شد!');
+      }, function(error) {
+        console.log(error);
+        alert('❌ خطا در ارسال ایمیل: ' + error.text);
+      });
+  });
+</script>
+<!--===============================================================================================-->
+
 	<script src="js/main.js"></script>
 
 </body>
