@@ -119,7 +119,7 @@
       e.preventDefault();
       emailjs.sendForm("service_58nctaw", "template_79p9tre", this)
         .then(function(response) {
-          alert("✅ ایمیل کاربر با موفقیت ارسال شد!");
+          alert("✅ We’ve received your Email");
         }, function(error) {
           alert("❌ خطا در ارسال ایمیل:\n" + error.text);
         });
