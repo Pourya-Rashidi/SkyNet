@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Coming Soon 2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- استایل‌ها -->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <!-- اسکریپت EmailJS باید در head یا اول body باشه -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+
+  <div class="simpleslide100">
+    <div class="simpleslide100-item bg-img1" style="background-image: url('images/bg02.gif');"></div>
+  </div>
+
+  <div class="size1 overlay1">
+    <div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
+      <h3 class="l1-txt1 txt-center p-b-25">
+        Coming Soon
+      </h3>
+
+      <p class="m2-txt1 txt-center p-b-48">
+        Our website is under construction, follow us for update now!
+      </p>
+
+      <!-- Countdown -->
+      <div class="flex-w flex-c-m cd100 p-b-33">
+        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+          <span class="l2-txt1 p-b-9" id="days">00</span>
+          <span class="s2-txt1">Days</span>
+        </div>
+        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+          <span class="l2-txt1 p-b-9" id="hours">00</span>
+          <span class="s2-txt1">Hours</span>
+        </div>
+        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+          <span class="l2-txt1 p-b-9" id="minutes">00</span>
+          <span class="s2-txt1">Minutes</span>
+        </div>
+        <div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+          <span class="l2-txt1 p-b-9" id="seconds">00</span>
+          <span class="s2-txt1">Seconds</span>
+        </div>
+      </div>
+
+      <!-- فرم ایمیل -->
+      <form id="subscribe-form" class="w-full flex-w flex-c-m validate-form">
+        <div class="wrap-input100 validate-input where1" data-validate="Valid email is required: ex@abc.xyz">
+          <input class="input100 placeholder0 s2-txt2" type="email" name="user_email" placeholder="Enter Email Address" required>
+          <span class="focus-input100"></span>
+        </div>
+        <button type="submit" class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1">
+          Subscribe
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- اسکریپت‌ها -->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/select2/select2.min.js"></script>
+  <script src="vendor/countdowntime/moment.min.js"></script>
+  <script src="vendor/countdowntime/moment-timezone.min.js"></script>
+  <script src="vendor/countdowntime/moment-timezone-with-data.min.js"></script>
+  <script src="vendor/countdowntime/countdowntime.js"></script>
+
+  <!-- تایمر -->
+  <script>
+    const endDate = new Date("2025-09-21T20:30:00+03:30");
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+      if (diff <= 0) {
+        ["days", "hours", "minutes", "seconds"].forEach(id => {
+          document.getElementById(id).textContent = "00";
+        });
+        clearInterval(timer);
+        return;
+      }
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+
+  <script src="vendor/tilt/tilt.jquery.min.js"></script>
+  <script>
+    $('.js-tilt').tilt({ scale: 1.1 });
+  </script>
+
+  <!-- مقداردهی و ارسال با EmailJS -->
+  <script>
+    (function() {
+      emailjs.init("IV9jynXQhxZeWuKEL");
+    })();
+
+    document.getElementById("subscribe-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      emailjs.sendForm("service_58nctaw", "template_79p9tre", this)
+        .then(function(response) {
+          alert("✅ We’ve received your Email");
+        }, function(error) {
+          alert("❌ خطا در ارسال ایمیل:\n" + error.text);
+        });
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
