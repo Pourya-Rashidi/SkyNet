@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About SkyNet</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Oldenburg&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --title-size: 36px;
+      --title-font: 'Notable', sans-serif;
+      --text-font: 'Oldenburg', sans-serif;
+      --title-size: 40px;
       --text-size: 18px;
     }
 
@@ -19,7 +22,7 @@
       padding: 0;
       background-color: #000;
       color: #eee;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--text-font);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -38,13 +41,15 @@
 
     h1 {
       font-size: var(--title-size);
-      color: #0ff;
+      font-family: var(--title-font);
+      color: #0a5a8f;
       text-align: center;
       margin-bottom: 1.5rem;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
     .about-text {
+      font-family: var(--text-font);
       font-size: var(--text-size);
       line-height: 1.9;
       letter-spacing: 0.3px;
@@ -94,3 +99,4 @@
   </div>
 </body>
 </html>
+
