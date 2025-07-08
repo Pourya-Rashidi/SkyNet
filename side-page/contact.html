@@ -90,17 +90,17 @@
     }
   </style>
 </head>
-<body>
+<body> 
 
   <div class="form-container">
     <form id="contact-form" enctype="multipart/form-data">
-      <input type="text" name="user_name" placeholder="Full Name *" required />
-      <input type="email" name="user_email" placeholder="Email *" required />
-      <input type="text" name="user_country" placeholder="Country (optional)" />
-      <input type="number" name="user_age" placeholder="Age (optional)" min="1" />
+      <input type="text" name="name" placeholder="Full Name *" required />
+      <input type="email" name="email" placeholder="Email *" required />
+      <input type="text" name="country" placeholder="Country (optional)" />
+      <input type="number" name="age" placeholder="Age (optional)" min="1" />
       <label class="file-label">Attach Resume (optional, PDF only):</label>
-      <input type="file" name="user_file" accept=".pdf" />
-      <textarea name="user_message" rows="6" placeholder="Message (optional)"></textarea>
+      <input type="file" name="file" accept=".pdf" />
+      <textarea name="message" rows="6" placeholder="Message (optional)"></textarea>
       <button type="submit">Submit</button>
     </form>
   </div>
