@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SkyNet Roadmap Timeline</title>
 
-  <!-- فونت‌های دلخواه: تغییر مسیر CDN به دلخواه شما -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* تنظیمات پایه */
     body {
       background: #fff;
       font-family: 'Roboto', sans-serif;
@@ -61,7 +59,6 @@
       border-right: 6px solid #2196f3;
     }
 
-    /* سال وسط خط */
     .timeline-item::after {
       content: attr(data-year);
       position: absolute;
@@ -78,7 +75,6 @@
       z-index: 2;
     }
 
-    /* عنوان */
     .timeline-item .title {
       font-family: 'Orbitron', sans-serif;
       font-size: 18px;
@@ -87,14 +83,12 @@
       margin-bottom: 8px;
     }
 
-    /* متن */
     .timeline-item .text {
       font-size: 14px;
       color: #555;
       line-height: 1.6;
     }
 
-    /* قابل تغییر بودن فونت و رنگ */
     :root {
       --title-font: 'Orbitron', sans-serif;
       --text-font: 'Roboto', sans-serif;
@@ -122,7 +116,6 @@
       background: var(--year-bg);
     }
 
-    /* ریسپانسیو */
     @media screen and (max-width: 768px) {
       .timeline::before {
         left: 8px;
@@ -159,36 +152,71 @@
 
     <div class="timeline-item left" data-year="2022">
       <div class="content">
-        <div class="title">Phase I: Idea & Planning</div>
-        <div class="text">Conceptualizing SkyNet as an open-access robotic observatory platform. Feasibility studies and platform architecture drafted.</div>
+        <div class="title">Phase I: Idea & Vision</div>
+        <div class="text">Initial concept for SkyNet as a global open observatory and climate monitoring network. Mission and vision clarified.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="2022">
+      <div class="content">
+        <div class="title">Phase II: Core Team Formation</div>
+        <div class="text">Recruiting passionate contributors, defining roles, and outlining initial organizational structure.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item left" data-year="2023">
+      <div class="content">
+        <div class="title">Phase III: Website & Branding</div>
+        <div class="text">Launching the first version of the SkyNet website on GitHub. Developing identity, logo, and initial content.</div>
       </div>
     </div>
 
     <div class="timeline-item right" data-year="2023">
       <div class="content">
-        <div class="title">Phase II: Prototype & Testing</div>
-        <div class="text">First hardware prototype deployed with ESP8266. Backend telescope control tested via web interface.</div>
+        <div class="title">Phase IV: Prototype Development</div>
+        <div class="text">Designing initial telescope prototype using ESP8266. Setting up remote access and simple controls.</div>
       </div>
     </div>
 
     <div class="timeline-item left" data-year="2024">
       <div class="content">
-        <div class="title">Phase III: Beta Launch</div>
-        <div class="text">Web-based user interface released for public beta. Remote access for limited users. Feedback loop enabled.</div>
+        <div class="title">Phase V: Pilot Testing</div>
+        <div class="text">Testing prototype functionality. Collecting user feedback and identifying technical limitations.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="2024">
+      <div class="content">
+        <div class="title">Phase VI: Global Funding & Partnerships</div>
+        <div class="text">Seeking international funding, launching crowdfunding, applying for grants, and building partnerships with institutions.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item left" data-year="2025">
+      <div class="content">
+        <div class="title">Phase VII: Infrastructure Expansion</div>
+        <div class="text">Building network of telescopes, cloud data infrastructure, and integration with climate sensors.</div>
       </div>
     </div>
 
     <div class="timeline-item right" data-year="2025">
       <div class="content">
-        <div class="title">Phase IV: Global Rollout</div>
-        <div class="text">Multi-language support, more telescopes added. Full educational integration and public stargazing campaigns initiated.</div>
+        <div class="title">Phase VIII: Public Beta Launch</div>
+        <div class="text">Opening platform to early public access. Community building and global feedback collection.</div>
       </div>
     </div>
 
     <div class="timeline-item left" data-year="2026">
       <div class="content">
-        <div class="title">Phase V: International Funding & Partnerships</div>
-        <div class="text">Launching global fundraising campaigns via crowdfunding, scientific grants, and international partnerships with universities, schools, and space outreach organizations.</div>
+        <div class="title">Phase IX: Education & Global Outreach</div>
+        <div class="text">Collaborating with schools, NGOs, and space organizations to deliver education and citizen science opportunities.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="2027">
+      <div class="content">
+        <div class="title">Phase X: Sustainability & Climate Action</div>
+        <div class="text">Long-term operation of SkyNet for astronomical research and climate change monitoring. Promoting global sustainability efforts.</div>
       </div>
     </div>
 
