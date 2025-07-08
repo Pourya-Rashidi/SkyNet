@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form | SkyNet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("IV9jynXQhxZeWuKEL"); // Public Key
+    })();
+  </script>
+  <style>
+    body {
+      font-family: 'Estedad', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .form-container input::placeholder,
+    .form-container textarea::placeholder {
+      color: #ccc;
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .form-container button {
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #00cccc;
+    }
+
+    .file-label {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <form id="contact-form" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Full Name *" required />
+      <input type="email" name="email" placeholder="Email *" required />
+      <input type="text" name="country" placeholder="Country (optional)" />
+      <input type="number" name="age" placeholder="Age (optional)" min="1" />
+      <label class="file-label">Attach Resume (optional, PDF only):</label>
+      <input type="file" name="file" accept=".pdf" />
+      <textarea name="message" rows="4" placeholder="Message (optional)"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      emailjs.sendForm("service_58nctaw", "template_spg0huh", this)
+        .then(function() {
+          alert("✅ Your information has been sent successfully.");
+        }, function(error) {
+          alert("❌ Failed to send. Please try again.");
+          console.error("EmailJS Error:", error);
+        });
+    });
+  </script>
+
+</body>
+</html>
