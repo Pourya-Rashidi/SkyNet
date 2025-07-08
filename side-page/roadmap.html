@@ -5,22 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SkyNet Roadmap Timeline</title>
 
-  <!-- فونت‌های دلخواه: تغییر مسیر CDN به دلخواه شما -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* تنظیمات پایه */
     body {
       background: #fff;
       font-family: 'Roboto', sans-serif;
       padding: 50px 20px;
     }
-
     .timeline {
       position: relative;
       max-width: 1000px;
       margin: auto;
     }
-
     .timeline::before {
       content: '';
       position: absolute;
@@ -31,13 +27,11 @@
       background: #ccc;
       transform: translateX(-50%);
     }
-
     .timeline-item {
       padding: 20px 40px;
       position: relative;
       width: 50%;
     }
-
     .timeline-item .content {
       padding: 20px;
       background: #f9f9f9;
@@ -45,23 +39,18 @@
       border-left: 6px solid #2196f3;
       position: relative;
     }
-
     .timeline-item.left {
       left: 0;
       text-align: right;
     }
-
     .timeline-item.right {
       left: 50%;
       text-align: left;
     }
-
     .timeline-item.left .content {
       border-left: none;
       border-right: 6px solid #2196f3;
     }
-
-    /* سال وسط خط */
     .timeline-item::after {
       content: attr(data-year);
       position: absolute;
@@ -77,8 +66,6 @@
       border-radius: 50px;
       z-index: 2;
     }
-
-    /* عنوان */
     .timeline-item .title {
       font-family: 'Orbitron', sans-serif;
       font-size: 18px;
@@ -86,66 +73,52 @@
       color: #333;
       margin-bottom: 8px;
     }
-
-    /* متن */
     .timeline-item .text {
       font-size: 14px;
       color: #555;
       line-height: 1.6;
     }
-
-    /* قابل تغییر بودن فونت و رنگ */
     :root {
       --title-font: 'Orbitron', sans-serif;
       --text-font: 'Roboto', sans-serif;
       --year-font: 'Orbitron', sans-serif;
-
       --title-color: #333;
       --text-color: #555;
       --year-color: #fff;
       --year-bg: #2196f3;
     }
-
     .timeline-item .title {
       font-family: var(--title-font);
       color: var(--title-color);
     }
-
     .timeline-item .text {
       font-family: var(--text-font);
       color: var(--text-color);
     }
-
     .timeline-item::after {
       font-family: var(--year-font);
       color: var(--year-color);
       background: var(--year-bg);
     }
-
-    /* ریسپانسیو */
     @media screen and (max-width: 768px) {
       .timeline::before {
         left: 8px;
       }
-
       .timeline-item {
         width: 100%;
         padding-left: 30px;
         padding-right: 25px;
       }
-
       .timeline-item.left,
       .timeline-item.right {
         left: 0;
         text-align: left;
       }
-
       .timeline-item.left .content,
       .timeline-item.right .content {
         border-right: none;
         border-left: 6px solid #2196f3;
       }
-
       .timeline-item::after {
         left: 0;
         transform: translateX(0);
@@ -157,31 +130,73 @@
 
   <div class="timeline">
 
-    <div class="timeline-item left" data-year="2022">
+    <div class="timeline-item left" data-year="Phase 1">
       <div class="content">
-        <div class="title">Phase I: Idea & Planning</div>
-        <div class="text">Conceptualizing SkyNet as an open-access robotic observatory platform. Feasibility studies and platform architecture drafted.</div>
+        <div class="title">Idea Validation & MVP Definition</div>
+        <div class="text">Define mission, vision, and scope. Determine initial MVP. Develop branding (name, logo, domain).</div>
       </div>
     </div>
 
-    <div class="timeline-item right" data-year="2023">
+    <div class="timeline-item right" data-year="Phase 2">
       <div class="content">
-        <div class="title">Phase II: Prototype & Testing</div>
-        <div class="text">First hardware prototype deployed with ESP8266. Backend telescope control tested via web interface.</div>
+        <div class="title">Landing Page & Project Pitch</div>
+        <div class="text">Build a bilingual landing page and create a one-pager or slide deck to introduce the project.</div>
       </div>
     </div>
 
-    <div class="timeline-item left" data-year="2024">
+    <div class="timeline-item left" data-year="Phase 3">
       <div class="content">
-        <div class="title">Phase III: Beta Launch</div>
-        <div class="text">Web-based user interface released for public beta. Remote access for limited users. Feedback loop enabled.</div>
+        <div class="title">Core Team Formation</div>
+        <div class="text">Identify key roles. Recruit collaborators. Set up a lightweight organizational structure.</div>
       </div>
     </div>
 
-    <div class="timeline-item right" data-year="2025">
+    <div class="timeline-item right" data-year="Phase 4">
       <div class="content">
-        <div class="title">Phase IV: Global Rollout</div>
-        <div class="text">Multi-language support, more telescopes added. Full educational integration and public stargazing campaigns initiated.</div>
+        <div class="title">MVP Development</div>
+        <div class="text">Build a functional prototype. Telescope control or climate data dashboard using real/simulated data.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item left" data-year="Phase 5">
+      <div class="content">
+        <div class="title">Testing & Feedback</div>
+        <div class="text">Deploy MVP, gather user feedback, document issues, and plan refinements.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="Phase 6">
+      <div class="content">
+        <div class="title">Module Expansion</div>
+        <div class="text">Integrate live data (e.g. NASA/NOAA), improve UI/UX, and add backend features.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item left" data-year="Phase 7">
+      <div class="content">
+        <div class="title">Community & Education</div>
+        <div class="text">Develop educational content and grow a user community through outreach and learning resources.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="Phase 8">
+      <div class="content">
+        <div class="title">Outreach & Funding</div>
+        <div class="text">Connect with institutions and apply for funding or sponsorship from scientific or climate organizations.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item left" data-year="Phase 9">
+      <div class="content">
+        <div class="title">Platform Launch</div>
+        <div class="text">Release the official platform with public features, data tools, and user registration.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="Phase 10">
+      <div class="content">
+        <div class="title">Global Expansion</div>
+        <div class="text">Add multi-language support, join global networks, and launch collaborative scientific projects.</div>
       </div>
     </div>
 
