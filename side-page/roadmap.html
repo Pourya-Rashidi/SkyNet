@@ -57,48 +57,51 @@
       top: 0px;
       left: 50%;
       transform: translateX(-50%);
-      background: #2196f3;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 10px 16px;
+      background: var(--year-bg);
+      color: var(--year-color);
+      font-family: var(--year-font);
+      font-size: var(--year-size);
+      font-weight: var(--year-weight);
+      padding: var(--year-padding);
       border-radius: 50px;
       z-index: 2;
     }
     .timeline-item .title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: #333;
+      font-family: var(--title-font);
+      font-size: var(--title-size);
+      font-weight: var(--title-weight);
+      color: var(--title-color);
       margin-bottom: 8px;
     }
     .timeline-item .text {
-      font-size: 14px;
-      color: #555;
+      font-family: var(--text-font);
+      font-size: var(--text-size);
+      color: var(--text-color);
       line-height: 1.6;
     }
     :root {
+      /* فونت‌ها */
       --title-font: 'Orbitron', sans-serif;
       --text-font: 'Roboto', sans-serif;
       --year-font: 'Orbitron', sans-serif;
+
+      /* اندازه فونت‌ها */
+      --title-size: 18px;
+      --text-size: 14px;
+      --year-size: 16px;
+
+      /* وزن فونت */
+      --title-weight: 600;
+      --year-weight: bold;
+
+      /* رنگ‌ها */
       --title-color: #333;
       --text-color: #555;
       --year-color: #fff;
       --year-bg: #2196f3;
-    }
-    .timeline-item .title {
-      font-family: var(--title-font);
-      color: var(--title-color);
-    }
-    .timeline-item .text {
-      font-family: var(--text-font);
-      color: var(--text-color);
-    }
-    .timeline-item::after {
-      font-family: var(--year-font);
-      color: var(--year-color);
-      background: var(--year-bg);
+
+      /* پدینگ سال (دایره دور عدد) */
+      --year-padding: 10px 16px;
     }
     @media screen and (max-width: 768px) {
       .timeline::before {
@@ -130,63 +133,63 @@
 
   <div class="timeline">
 
-    <div class="timeline-item left" data-year="2022">
+    <div class="timeline-item left" data-year="2018">
       <div class="content">
         <div class="title">Phase I: Idea & Vision</div>
-        <div class="text">Initial concept for SkyNet as a global open observatory and climate monitoring network. Mission and vision clarified.</div>
+        <div class="text">The concept, mission, and vision for SkyNet as a global online observatory and climate monitoring network were clarified.</div>
       </div>
     </div>
 
-    <div class="timeline-item right" data-year="2022">
+    <div class="timeline-item right" data-year="8/2025">
       <div class="content">
-        <div class="title">Phase II: Core Team Formation</div>
-        <div class="text">Recruiting passionate contributors, defining roles, and outlining initial organizational structure.</div>
-      </div>
-    </div>
-
-    <div class="timeline-item left" data-year="2023">
-      <div class="content">
-        <div class="title">Phase III: Website & Branding</div>
+        <div class="title">Phase II: Website & Branding</div>
         <div class="text">Launching the first version of the SkyNet website on GitHub. Developing identity, logo, and initial content.</div>
       </div>
     </div>
 
-    <div class="timeline-item right" data-year="2023">
+    <div class="timeline-item left" data-year="12/2025">
+      <div class="content">
+        <div class="title">Phase III: Core Team Formation</div>
+        <div class="text">Recruiting passionate contributors, defining roles, and outlining initial organizational structure.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item right" data-year="6/2026">
       <div class="content">
         <div class="title">Phase IV: Global Funding & Partnerships</div>
         <div class="text">Seeking international funding, launching crowdfunding, applying for grants, and building partnerships with institutions.</div>
       </div>
     </div>
 
-    <div class="timeline-item left" data-year="2024">
+    <div class="timeline-item left" data-year="12/2026">
       <div class="content">
         <div class="title">Phase V: Prototype Development</div>
         <div class="text">Designing initial telescope prototype using ESP8266. Setting up remote access and simple controls.</div>
       </div>
     </div>
 
-    <div class="timeline-item right" data-year="2024">
+    <div class="timeline-item right" data-year="03/2027">
       <div class="content">
         <div class="title">Phase VI: Pilot Testing</div>
         <div class="text">Testing prototype functionality. Collecting user feedback and identifying technical limitations.</div>
       </div>
     </div>
 
-    <div class="timeline-item left" data-year="2025">
+    <div class="timeline-item left" data-year="2027">
       <div class="content">
         <div class="title">Phase VII: Infrastructure Expansion</div>
         <div class="text">Building network of telescopes, cloud data infrastructure, and integration with climate sensors.</div>
       </div>
     </div>
 
-    <div class="timeline-item right" data-year="2025">
+    <div class="timeline-item right" data-year="2027">
       <div class="content">
         <div class="title">Phase VIII: Public Beta Launch</div>
         <div class="text">Opening platform to early public access. Community building and global feedback collection.</div>
       </div>
     </div>
 
-    <div class="timeline-item left" data-year="2026">
+    <div class="timeline-item left" data-year="2027">
       <div class="content">
         <div class="title">Phase IX: Education & Global Outreach</div>
         <div class="text">Collaborating with schools, NGOs, and space organizations to deliver education and citizen science opportunities.</div>
