@@ -12,13 +12,11 @@
       font-family: 'Roboto', sans-serif;
       padding: 50px 20px;
     }
-
     .timeline {
       position: relative;
       max-width: 1000px;
       margin: auto;
     }
-
     .timeline::before {
       content: '';
       position: absolute;
@@ -29,13 +27,11 @@
       background: #ccc;
       transform: translateX(-50%);
     }
-
     .timeline-item {
       padding: 20px 40px;
       position: relative;
       width: 50%;
     }
-
     .timeline-item .content {
       padding: 20px;
       background: #f9f9f9;
@@ -43,22 +39,18 @@
       border-left: 6px solid #2196f3;
       position: relative;
     }
-
     .timeline-item.left {
       left: 0;
       text-align: right;
     }
-
     .timeline-item.right {
       left: 50%;
       text-align: left;
     }
-
     .timeline-item.left .content {
       border-left: none;
       border-right: 6px solid #2196f3;
     }
-
     .timeline-item::after {
       content: attr(data-year);
       position: absolute;
@@ -74,7 +66,6 @@
       border-radius: 50px;
       z-index: 2;
     }
-
     .timeline-item .title {
       font-family: 'Orbitron', sans-serif;
       font-size: 18px;
@@ -82,63 +73,52 @@
       color: #333;
       margin-bottom: 8px;
     }
-
     .timeline-item .text {
       font-size: 14px;
       color: #555;
       line-height: 1.6;
     }
-
     :root {
       --title-font: 'Orbitron', sans-serif;
       --text-font: 'Roboto', sans-serif;
       --year-font: 'Orbitron', sans-serif;
-
       --title-color: #333;
       --text-color: #555;
       --year-color: #fff;
       --year-bg: #2196f3;
     }
-
     .timeline-item .title {
       font-family: var(--title-font);
       color: var(--title-color);
     }
-
     .timeline-item .text {
       font-family: var(--text-font);
       color: var(--text-color);
     }
-
     .timeline-item::after {
       font-family: var(--year-font);
       color: var(--year-color);
       background: var(--year-bg);
     }
-
     @media screen and (max-width: 768px) {
       .timeline::before {
         left: 8px;
       }
-
       .timeline-item {
         width: 100%;
         padding-left: 30px;
         padding-right: 25px;
       }
-
       .timeline-item.left,
       .timeline-item.right {
         left: 0;
         text-align: left;
       }
-
       .timeline-item.left .content,
       .timeline-item.right .content {
         border-right: none;
         border-left: 6px solid #2196f3;
       }
-
       .timeline-item::after {
         left: 0;
         transform: translateX(0);
@@ -173,22 +153,22 @@
 
     <div class="timeline-item right" data-year="2023">
       <div class="content">
-        <div class="title">Phase IV: Prototype Development</div>
-        <div class="text">Designing initial telescope prototype using ESP8266. Setting up remote access and simple controls.</div>
+        <div class="title">Phase IV: Global Funding & Partnerships</div>
+        <div class="text">Seeking international funding, launching crowdfunding, applying for grants, and building partnerships with institutions.</div>
       </div>
     </div>
 
     <div class="timeline-item left" data-year="2024">
       <div class="content">
-        <div class="title">Phase V: Pilot Testing</div>
-        <div class="text">Testing prototype functionality. Collecting user feedback and identifying technical limitations.</div>
+        <div class="title">Phase V: Prototype Development</div>
+        <div class="text">Designing initial telescope prototype using ESP8266. Setting up remote access and simple controls.</div>
       </div>
     </div>
 
     <div class="timeline-item right" data-year="2024">
       <div class="content">
-        <div class="title">Phase VI: Global Funding & Partnerships</div>
-        <div class="text">Seeking international funding, launching crowdfunding, applying for grants, and building partnerships with institutions.</div>
+        <div class="title">Phase VI: Pilot Testing</div>
+        <div class="text">Testing prototype functionality. Collecting user feedback and identifying technical limitations.</div>
       </div>
     </div>
 
