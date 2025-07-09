@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate to SkyNet</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .donation-container {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      background: #334155;
+      border: none;
+      border-radius: 8px;
+      color: #f1f5f9;
+      font-size: 14px;
+    }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .btc-box {
+      background: #0f172a;
+      border: 1px solid #475569;
+      padding: 10px;
+      margin: 15px 0;
+      text-align: center;
+      border-radius: 8px;
+      font-family: monospace;
+    }
+
+    .qr-code {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      background: transparent;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #38bdf8;
+      color: black;
+    }
+
+    .success-msg {
+      color: #4ade80;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .btc-link {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #93c5fd;
+    }
+
+    .btc-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="donation-container">
+    <h2>Support the SkyNet Project</h2>
+    <form id="donation-form">
+      <label for="name">Full Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="country">Country:</label>
+      <input type="text" name="country" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
+
+      <label for="amount">Amount (in BTC or Satoshi):</label>
+      <input type="text" name="amount" required>
+
+      <div class="btc-box" id="btc-address">
+        BTC Address: <br>
+        <span id="btc-value">145z74wFqoH56BCgkJzMopFjjLGm4E4G8e</span>
+        <br>
+        <button type="button" class="copy-btn" onclick="copyAddress()">Copy Address</button>
+        <a href="https://pay.atomicwallet.io/__0__BTC__145z74wFqoH56BCgkJzMopFjjLGm4E4G8e" target="_blank" class="btc-link">Open in Atomic Wallet</a>
+      </div>
+
+      <div class="qr-code">
+        <canvas id="btc-qr"></canvas>
+      </div>
+
+      <button type="submit">Submit Donation Info</button>
+      <div id="msg" class="success-msg"></div>
+    </form>
+  </div>
+
+  <script>
+    const BTC_ADDRESS = "145z74wFqoH56BCgkJzMopFjjLGm4E4G8e";
+
+    // Initialize EmailJS
+    (function () {
+      emailjs.init("uv-jabwH_zdSqe5PM");
+    })();
+
+    // QR code generator
+    QRCode.toCanvas(
+      document.getElementById('btc-qr'),
+      `bitcoin:${BTC_ADDRESS}`,
+      { width: 160 },
+      function (error) {
+        if (error) console.error(error);
+      }
+    );
+
+    function copyAddress() {
+      navigator.clipboard.writeText(BTC_ADDRESS);
+      alert("Bitcoin address copied to clipboard!");
+    }
+
+    document.getElementById('donation-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      emailjs.sendForm('service_lyj6sa8', 'template_xytr8ek', this)
+        .then(function () {
+          document.getElementById('msg').innerText = "Thank you! Your information has been sent.";
+          document.getElementById('donation-form').reset();
+        }, function (error) {
+          alert("Error sending the form. Please try again.");
+        });
+    });
+  </script>
+
+</body>
+</html>
