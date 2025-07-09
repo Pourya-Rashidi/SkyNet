@@ -41,6 +41,10 @@
       font-size: 15px;
       box-sizing: border-box;
     }
+    input::placeholder {
+      color: #94a3b8;
+      font-style: italic;
+    }
     .qr-copy-wrapper {
       display: flex;
       justify-content: center;
@@ -136,8 +140,8 @@
       </div>
     </div>
 
-    <label for="hash-number">Transaction Hash Number:</label>
-    <input id="hash-number" name="hash_no" type="text" required placeholder="Enter transaction hash" />
+    <label for="hash_no">Transaction Hash Number:</label>
+    <input id="hash_no" name="hash_no" type="text" required placeholder="Enter transaction hash" />
 
     <input type="hidden" id="currency" name="currency" value="" />
 
@@ -182,11 +186,11 @@
 
     const name = this.name.value.trim();
     const email = this.email.value.trim();
-    const hashNumber = this.hash_number.value.trim();
+    const hashNo = this.hash_no.value.trim();
     const currency = currencyInput.value;
 
-    if (!name || !email || !hashNumber || !currency) {
-      alert("Please fill in all required fields and select a wallet by copying its address.");
+    if (!name || !email || !hashNo || !currency) {
+      alert("Please fill in all required fields and copy a wallet address.");
       return;
     }
 
@@ -198,7 +202,7 @@
 
     emailjs.sendForm('service_lyj6sa8', 'template_xytr8ek', this)
       .then(() => {
-        document.getElementById("msg").innerText = "Thank you! Your donation info has been sent.";
+        document.getElementById("msg").innerText = "Thank you! Your donation info has been sent successfully.";
         this.reset();
         currencyInput.value = "";
         copyTronBtn.disabled = false;
