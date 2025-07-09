@@ -19,7 +19,7 @@
       background: #1e293b;
       border-radius: 15px;
       padding: 30px;
-      width: 520px;
+      width: 560px;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
     h2 {
@@ -41,51 +41,47 @@
       font-size: 15px;
       box-sizing: border-box;
     }
-    .wallet-buttons {
+    .qr-copy-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
       margin: 20px 0 25px;
-      font-weight: 600;
-      color: #38bdf8;
     }
-    .wallet-buttons button {
-      background: #334155;
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s;
-    }
-    .wallet-buttons button:hover:not(:disabled) {
-      background: #38bdf8;
-      color: #0f172a;
-    }
-    .wallet-buttons .or-text {
-      user-select: none;
-      padding: 0 8px;
-      color: #60a5fa;
-    }
-    input[disabled] {
-      background: #475569 !important;
-      cursor: not-allowed;
-    }
-    .qr-code-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 15px;
-    }
-    .qr-code-box {
+    .qr-copy-box {
       flex: 1;
       background: #0f172a;
       border-radius: 12px;
       padding: 10px;
       text-align: center;
       box-shadow: inset 0 0 8px #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .copy-button {
+      background: #334155;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      user-select: none;
+      margin-top: 6px;
+    }
+    .copy-button:hover {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    .or-text {
+      color: #94a3b8;
+      font-weight: 600;
+      user-select: none;
+      font-size: 18px;
+      padding: 0 10px;
     }
     button[type="submit"] {
       width: 100%;
@@ -124,33 +120,26 @@
     <label for="email">Email:</label>
     <input id="email" name="email" type="email" required placeholder="Please enter your real email address" />
 
-    <label for="tron-amount">Amount (TRON - TRX):</label>
-    <input id="tron-amount" name="amount_tron" type="text" pattern="^\d*\.?\d+$" placeholder="Enter TRX amount" />
-
-    <label for="doge-amount">Amount (Dogecoin - DOGE):</label>
-    <input id="doge-amount" name="amount_doge" type="text" pattern="^\d*\.?\d+$" placeholder="Enter DOGE amount" />
-
-    <input type="hidden" id="currency" name="currency" value="" />
-
-    <div class="wallet-buttons" aria-label="Wallet copy buttons">
-      <button type="button" id="copy-tron" title="Copy TRON Wallet Address">Copy TRON Address</button>
-      <span class="or-text">or</span>
-      <button type="button" id="copy-doge" title="Copy Dogecoin Wallet Address">Copy DOGE Address</button>
-    </div>
-
-    <div class="qr-code-container">
-      <div class="qr-code-box">
+    <div class="qr-copy-wrapper" aria-label="QR codes and copy buttons">
+      <div class="qr-copy-box">
         <div>TRON QR Code</div>
-        <canvas id="tron-qr"></canvas>
+        <canvas id="tron-qr" width="140" height="140"></canvas>
+        <button class="copy-button" id="copy-tron" title="Copy TRON Wallet Address">Copy TRON Address</button>
       </div>
-      <div class="qr-code-box">
+
+      <div class="or-text">or</div>
+
+      <div class="qr-copy-box">
         <div>DOGE QR Code</div>
-        <canvas id="doge-qr"></canvas>
+        <canvas id="doge-qr" width="140" height="140"></canvas>
+        <button class="copy-button" id="copy-doge" title="Copy Dogecoin Wallet Address">Copy DOGE Address</button>
       </div>
     </div>
 
     <label for="hash-number">Transaction Hash Number:</label>
     <input id="hash-number" name="hash_number" type="text" required placeholder="Enter transaction hash" />
+
+    <input type="hidden" id="currency" name="currency" value="" />
 
     <button type="submit">Submit Donation Info</button>
     <div class="success-msg" id="msg"></div>
@@ -166,35 +155,27 @@
   QRCode.toCanvas(document.getElementById("tron-qr"), "tron:" + tronWallet, { width: 140 });
   QRCode.toCanvas(document.getElementById("doge-qr"), "dogecoin:" + dogeWallet, { width: 140 });
 
-  document.getElementById("copy-tron").onclick = () => {
-    navigator.clipboard.writeText(tronWallet);
-    alert("TRON wallet address copied!");
-  };
-  document.getElementById("copy-doge").onclick = () => {
-    navigator.clipboard.writeText(dogeWallet);
-    alert("Dogecoin wallet address copied!");
-  };
-
-  const tronInput = document.getElementById("tron-amount");
-  const dogeInput = document.getElementById("doge-amount");
   const currencyInput = document.getElementById("currency");
 
-  function toggleInputs() {
-    if (tronInput.value.trim() !== "") {
-      dogeInput.disabled = true;
-      currencyInput.value = "TRON";
-    } else if (dogeInput.value.trim() !== "") {
-      tronInput.disabled = true;
-      currencyInput.value = "DOGE";
-    } else {
-      tronInput.disabled = false;
-      dogeInput.disabled = false;
-      currencyInput.value = "";
-    }
-  }
+  const copyTronBtn = document.getElementById("copy-tron");
+  const copyDogeBtn = document.getElementById("copy-doge");
 
-  tronInput.addEventListener("input", toggleInputs);
-  dogeInput.addEventListener("input", toggleInputs);
+  copyTronBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(tronWallet).then(() => alert("TRON wallet address copied!"));
+    currencyInput.value = "TRON";
+    disableOther(copyTronBtn, copyDogeBtn);
+  });
+
+  copyDogeBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(dogeWallet).then(() => alert("Dogecoin wallet address copied!"));
+    currencyInput.value = "DOGE";
+    disableOther(copyDogeBtn, copyTronBtn);
+  });
+
+  function disableOther(enableBtn, disableBtn) {
+    enableBtn.disabled = true;
+    disableBtn.disabled = false;
+  }
 
   document.getElementById("donation-form").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -202,11 +183,10 @@
     const name = this.name.value.trim();
     const email = this.email.value.trim();
     const hashNumber = this.hash_number.value.trim();
-    const tronAmount = tronInput.value.trim();
-    const dogeAmount = dogeInput.value.trim();
+    const currency = currencyInput.value;
 
-    if (!name || !email || !hashNumber) {
-      alert("Please fill in all required fields: Name, Email, and Transaction Hash Number.");
+    if (!name || !email || !hashNumber || !currency) {
+      alert("Please fill in all required fields and select a wallet by copying its address.");
       return;
     }
 
@@ -216,24 +196,13 @@
       return;
     }
 
-    if ((tronAmount && dogeAmount) || (!tronAmount && !dogeAmount)) {
-      alert("Please enter an amount for either TRON or Dogecoin, not both or none.");
-      return;
-    }
-
-    let amountValue = tronAmount || dogeAmount;
-    if (isNaN(amountValue) || parseFloat(amountValue) <= 0) {
-      alert("Please enter a valid positive amount.");
-      return;
-    }
-
     emailjs.sendForm('service_lyj6sa8', 'template_xytr8ek', this)
       .then(() => {
         document.getElementById("msg").innerText = "Thank you! Your donation info has been sent.";
         this.reset();
-        tronInput.disabled = false;
-        dogeInput.disabled = false;
         currencyInput.value = "";
+        copyTronBtn.disabled = false;
+        copyDogeBtn.disabled = false;
       })
       .catch(() => alert("Failed to send data. Please try again."));
   });
