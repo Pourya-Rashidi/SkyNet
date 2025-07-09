@@ -25,7 +25,18 @@
     h2 {
       color: #38bdf8;
       text-align: center;
+      margin-bottom: 20px;
+    }
+    .instruction-text {
+      font-family: 'Segoe UI', sans-serif; /* Change font here if needed */
+      font-size: 14px;                    /* Adjust font size here */
+      color: #f1f5f9;
+      background-color: #0f172a;
+      padding: 10px 15px;
+      border-radius: 10px;
       margin-bottom: 25px;
+      line-height: 1.6;
+      text-align: justify;
     }
     label {
       display: block;
@@ -114,6 +125,11 @@
 
 <div class="container">
   <h2>Donate to SkyNet</h2>
+  <p class="instruction-text">
+    First, copy the wallet address and transfer your desired amount of cryptocurrency.<br />
+    Then, return to this form and fill in the required fields before submitting.
+  </p>
+
   <form id="donation-form">
     <label for="name">Full Name:</label>
     <input id="name" name="name" type="text" required />
