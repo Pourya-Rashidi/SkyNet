@@ -2,126 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Donate to SkyNet</title>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About SkyNet</title>
+<meta charset="UTF-8" /><title>Donate to SkyNet</title><script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script><script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script><style>body{margin:0;padding:40px 20px;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#0f172a;color:#f8fafc;display:flex;justify-content:center;min-height:100vh}.container{background:#1e293b;border-radius:15px;padding:30px;width:560px;box-shadow:0 0 20px rgba(0,0,0,0.4)}h2{color:#38bdf8;text-align:center;margin-bottom:20px}.instruction-text{font-family:'Segoe UI',sans-serif;font-size:14px;color:#f1f5f9;background-color:#0f172a;padding:10px 15px;border-radius:10px;margin-bottom:25px;line-height:1.6;text-align:justify}label{display:block;margin:10px 0 6px}input[type="text"],input[type="email"]{width:100%;padding:10px;border-radius:8px;border:none;background:#334155;color:#f1f5f9;font-size:15px;box-sizing:border-box}input::placeholder{color:#94a3b8;font-style:italic}.qr-copy-wrapper{display:flex;justify-content:center;align-items:center;gap:15px;margin:20px 0 25px}.qr-copy-box{flex:1;background:#0f172a;border-radius:12px;padding:10px;text-align:center;box-shadow:inset 0 0 8px #1e293b;display:flex;flex-direction:column;align-items:center;gap:10px}.copy-button{background:#334155;border:1px solid #38bdf8;color:#38bdf8;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;transition:background-color 0.3s;user-select:none;margin-top:6px}.copy-button:hover{background:#38bdf8;color:#0f172a}.or-text{color:#94a3b8;font-weight:600;user-select:none;font-size:18px;padding:0 10px}button[type="submit"]{width:100%;padding:14px 0;background:#38bdf8;border:none;border-radius:10px;font-weight:700;font-size:16px;color:#0f172a;cursor:pointer;transition:background-color 0.3s}button[type="submit"]:hover{background:#0ea5e9}.success-msg{color:#4ade80;margin-top:15px;text-align:center;font-weight:600}</style>
+
+  <!-- فونت‌ها -->
+  <link href="https://fonts.googleapis.com/css2?family=Notable&family=Oldenburg&family=Michroma&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --title-font: 'Notable', sans-serif;
+      --text-font: 'Oldenburg', serif;
+      --title-size: 30px;
+      --text-size: 18px;
+      --navbar-height: 60px;
+    }
+
     body {
-      margin: 0; padding: 40px 20px;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
-      display: flex;
-      justify-content: center;
+      margin: 0;
+      padding: 0;
+      background-color: #7a7a7c;
+      color: #161618;
+      font-family: var(--text-font);
       min-height: 100vh;
+      overflow-x: hidden;
+      padding-top: var(--navbar-height);
+      animation: fadeIn 1.5s ease-in-out;
     }
-    .container {
-      background: #1e293b;
-      border-radius: 15px;
-      padding: 30px;
-      width: 560px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-    h2 {
-      color: #38bdf8;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .instruction-text {
-      font-family: 'Segoe UI', sans-serif; /* Change font here if needed */
-      font-size: 14px;                    /* Adjust font size here */
-      color: #f1f5f9;
-      background-color: #0f172a;
-      padding: 10px 15px;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      line-height: 1.6;
-      text-align: justify;
-    }
-    label {
-      display: block;
-      margin: 10px 0 6px;
-    }
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background: #334155;
-      color: #f1f5f9;
-      font-size: 15px;
-      box-sizing: border-box;
-    }
-    input::placeholder {
-      color: #94a3b8;
-      font-style: italic;
-    }
-    .qr-copy-wrapper {
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background-color: #2d2d2f;
+      color: #fff;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 15px;
-      margin: 20px 0 25px;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
-    .qr-copy-box {
-      flex: 1;
-      background: #0f172a;
-      border-radius: 12px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: inset 0 0 8px #1e293b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+
+    .navbar .logo {
+      font-family: 'Michroma', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
     }
-    .copy-button {
-      background: #334155;
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s;
-      user-select: none;
-      margin-top: 6px;
-    }
-    .copy-button:hover {
-      background: #38bdf8;
-      color: #0f172a;
-    }
-    .or-text {
-      color: #94a3b8;
-      font-weight: 600;
-      user-select: none;
-      font-size: 18px;
-      padding: 0 10px;
-    }
-    button[type="submit"] {
-      width: 100%;
-      padding: 14px 0;
-      background: #38bdf8;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
+
+    .navbar .nav-links a {
+      color: #fff;
+      margin-left: 1.5rem;
+      text-decoration: none;
       font-size: 16px;
-      color: #0f172a;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      transition: color 0.3s ease;
     }
-    button[type="submit"]:hover {
-      background: #0ea5e9;
+
+    .navbar .nav-links a:hover {
+      color: #1dc9ff;
     }
-    .success-msg {
-      color: #4ade80;
-      margin-top: 15px;
+
+    h1 {
+      font-size: var(--title-size);
+      font-family: var(--title-font);
+      color: #3b3b3f;
       text-align: center;
-      font-weight: 600;
+      margin: 2rem 0 1.5rem;
+      letter-spacing: 1.5px;
+    }
+
+    .about-text {
+      font-family: var(--text-font);
+      font-size: var(--text-size);
+      line-height: 1.9;
+      letter-spacing: 0.3px;
+      text-align: justify;
+      text-align-last: center;
+      direction: ltr;
+      padding: 0 3rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.4rem;
+      text-indent: 2em;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        align-items: flex-start;
+      }
+
+      .navbar .nav-links {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- نوار بالا -->
+  <div class="navbar">
+    <div class="logo">SkyNet</div>
+    <div class="nav-links">
+      <a href="https://pourya-rashidi.github.io/SkyNet/">Home</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/donate.html">Donate</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/about.html">About</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/roadmap.html" target="_blank">Roadmap</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet">Screenings</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet">Press</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- محتوای اصلی -->
 
 <div class="container">
   <h2>Donate to SkyNet</h2>
@@ -228,5 +239,6 @@
   });
 </script>
 
+  
 </body>
 </html>
