@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About SkyNet</title>
+  
+  <!-- فونت‌ها -->
+  <link href="https://fonts.googleapis.com/css2?family=Notable&family=Oldenburg&family=Michroma&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --title-font: 'Notable', sans-serif;
+      --text-font: 'Oldenburg', serif;
+      --title-size: 30px;
+      --text-size: 18px;
+      --navbar-height: 60px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #7a7a7c;
+      color: #161618;
+      font-family: var(--text-font);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-top: var(--navbar-height);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background-color: #2d2d2f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar .logo {
+      font-family: 'Michroma', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links a {
+      color: #fff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #1dc9ff;
+    }
+
+    h1 {
+      font-size: var(--title-size);
+      font-family: var(--title-font);
+      color: #3b3b3f;
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+      letter-spacing: 1.5px;
+    }
+
+    .about-text {
+      font-family: var(--text-font);
+      font-size: var(--text-size);
+      line-height: 1.9;
+      letter-spacing: 0.3px;
+      text-align: justify;
+      text-align-last: center;
+      direction: ltr;
+      padding: 0 3rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.4rem;
+      text-indent: 2em;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        align-items: flex-start;
+      }
+
+      .navbar .nav-links {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- نوار بالا -->
+  <div class="navbar">
+    <div class="logo">SkyNet</div>
+    <div class="nav-links">
+      <a href="https://pourya-rashidi.github.io/SkyNet/">Home</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/donate.html">Donate</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/about.html">About</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/roadmap.html" target="_blank">Roadmap</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/org-chart/org-chart.html" target="_blank">Organisation Chart</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/Observatory.html">Observatory</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- محتوای اصلی -->
+
+
+  
+</body>
+</html>
