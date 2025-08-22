@@ -1,62 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Earth Ice & Cryosphere Status</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyNet Climate & Cryosphere Dashboard</title>
+   
+  <!-- فونت‌ها -->
+  <link href="https://fonts.googleapis.com/css2?family=Notable&family=Oldenburg&family=Michroma&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Notable&family=Michroma&display=swap" rel="stylesheet">
-
+  <!-- NSIDC OpenLayers -->
+  <link rel="stylesheet" href="https://nsidc.org/api/mapservices/openlayers3/ol.css" type="text/css">
+  <script src="https://nsidc.org/api/mapservices/openlayers3/ol.js"></script>
+   
   <style>
     :root {
       --title-font: 'Notable', sans-serif;
-      --text-font: 'Michroma', sans-serif;
+      --text-font: 'Oldenburg', serif;
+      --title-size: 30px;
+      --text-size: 18px;
+      --navbar-height: 60px;
     }
 
     body {
       margin: 0;
       padding: 0;
+      background-color: #f5f7fa;
+      color: #161618;
       font-family: var(--text-font);
-      background-color: #e0f7fa;
-      color: #001f3f;
       min-height: 100vh;
-      padding-top: 60px;
+      overflow-x: hidden;
+      padding-top: var(--navbar-height);
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    h1 {
-      font-family: var(--title-font);
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background-color: #2d2d2f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar .logo {
+      font-family: 'Michroma', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links a {
+      color: #fff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #1dc9ff;
+    }
+
+    h1, h2 {
       text-align: center;
-      margin: 2rem 0;
-      font-size: 2rem;
-      color: #00796b;
-      letter-spacing: 1px;
+      font-family: var(--title-font);
+      color: #3b3b3f;
+      margin: 2rem 0 1rem;
     }
 
-    .ice-dashboard {
+    .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
       gap: 20px;
-      padding: 20px 40px;
+      padding: 20px;
     }
 
-    .ice-card {
-      background: #ffffff;
-      border-radius: 12px;
+    .card {
+      background: white;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .ice-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .ice-card h2 {
-      background: #00838f;
+    .card h2 {
+      background: #457b9d;
       color: white;
       font-size: 1.1rem;
       margin: 0;
-      padding: 12px;
+      padding: 10px;
     }
 
     iframe {
@@ -65,48 +102,235 @@
       border: none;
     }
 
-    @media (max-width: 700px) {
-      .ice-dashboard {
-        padding: 10px;
+    /* NSIDC Maps Styles */
+    .maps-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .map-box {
+      flex: 1 1 32%;
+      border: 1px solid black;
+      position: relative;
+      min-width: 300px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .map-title {
+      text-align: center;
+      font-weight: bold;
+      padding: 5px 0;
+      background: #f0f0f0;
+      border-bottom: 1px solid black;
+    }
+    .scale-location, .feature-info {
+      text-align: center;
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
+    iframe.greenland-tool {
+      width: 100%;
+      height: 680px;
+      border: 0;
+      margin-bottom: 30px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        align-items: flex-start;
+      }
+      .navbar .nav-links {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>Earth Ice & Cryosphere Status</h1>
-
-  <div class="ice-dashboard">
-    <div class="ice-card">
-      <h2>Global Glacier Mass Balance</h2>
-      <iframe src="https://ourworldindata.org/grapher/glaciers-mass-balance?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="ice-card">
-      <h2>Arctic Sea Ice Extent</h2>
-      <iframe src="https://ourworldindata.org/grapher/arctic-sea-ice-extent?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="ice-card">
-      <h2>Antarctic Sea Ice Extent</h2>
-      <iframe src="https://ourworldindata.org/grapher/antarctic-sea-ice-extent?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="ice-card">
-      <h2>Greenland Ice Sheet Mass</h2>
-      <iframe src="https://ourworldindata.org/grapher/greenland-ice-sheet-mass?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="ice-card">
-      <h2>Antarctic Ice Sheet Mass</h2>
-      <iframe src="https://ourworldindata.org/grapher/antarctic-ice-sheet-mass?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="ice-card">
-      <h2>Global Ice Loss Trends</h2>
-      <iframe src="https://ourworldindata.org/grapher/global-ice-loss?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+  <!-- نوار بالا -->
+  <div class="navbar">
+    <div class="logo">SkyNet</div>
+    <div class="nav-links">
+      <a href="https://pourya-rashidi.github.io/SkyNet/">Home</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/donate.html">Donate</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/about.html">About</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/roadmap.html" target="_blank">Roadmap</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/org-chart/org-chart.html" target="_blank">Organisation Chart</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/Membership.html">Membership</a>
+      <a href="https://pourya-rashidi.github.io/SkyNet/side-page/contact.html">Contact</a>
     </div>
   </div>
+
+  <!-- داشبورد اصلی اقلیم -->
+  <h1>Global Climate & Emissions Dashboard</h1>
+  <div class="dashboard">
+
+    <div class="card">
+        <h2>Global Temperature Anomaly</h2>
+        <iframe src="https://ourworldindata.org/explorers/climate-change?Metric=Temperature+anomaly&Long-run+series=false&country=OWID_WRL~ATA~Gulkana+Glacier~Lemon+Creek+Glacier~OWID_NAM~South+Cascade+Glacier~Wolverine+Glacier~Hawaii~Arctic+Ocean&tab=line&hideControls=false" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>CO₂ Emissions Per Capita</h2>
+        <iframe src="https://ourworldindata.org/explorers/co2?country=OWID_ASI~OWID_AFR~OWID_EUR~OWID_WRL~OWID_NAM~OWID_SAM~AUS&pickerSort=asc&Gas+or+Warming=CO%E2%82%82&Accounting=Territorial&Fuel+or+Land+Use+Change=All+fossil+emissions&Count=Per+capita&tab=line&hideControls=false" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Total Greenhouse Gas Emissions</h2>
+        <iframe src="https://ourworldindata.org/grapher/total-ghg-emissions?tab=map" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>GHG Emissions by Gas (Relative)</h2>
+        <iframe src="https://ourworldindata.org/grapher/ghg-emissions-by-gas?stackMode=relative&tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Methane Emissions (Map)</h2>
+        <iframe src="https://ourworldindata.org/grapher/methane-emissions?globe=1&globeRotation=32.47%2C54.45&globeZoom=2.5&tab=map" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Per Capita Methane Emissions</h2>
+        <iframe src="https://ourworldindata.org/grapher/per-capita-methane-emissions?tab=map" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Annual CO₂ Emissions per Country</h2>
+        <iframe src="https://ourworldindata.org/grapher/annual-co2-emissions-per-country?tab=map" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+  </div>
+
+  <!-- داشبورد وضعیت یخ‌ها -->
+  <h1>Earth Ice & Cryosphere Status</h1>
+  <div class="dashboard">
+
+    <div class="card">
+        <h2>Global Glacier Mass Balance</h2>
+        <iframe src="https://ourworldindata.org/grapher/glaciers-mass-balance?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Arctic Sea Ice Extent</h2>
+        <iframe src="https://ourworldindata.org/grapher/arctic-sea-ice-extent?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Antarctic Sea Ice Extent</h2>
+        <iframe src="https://ourworldindata.org/grapher/antarctic-sea-ice-extent?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Greenland Ice Sheet Mass</h2>
+        <iframe src="https://ourworldindata.org/grapher/greenland-ice-sheet-mass?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Antarctic Ice Sheet Mass</h2>
+        <iframe src="https://ourworldindata.org/grapher/antarctic-ice-sheet-mass?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>Global Ice Loss Trends</h2>
+        <iframe src="https://ourworldindata.org/grapher/global-ice-loss?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
+    </div>
+
+  </div>
+
+  <!-- نقشه‌های تعاملی NSIDC -->
+  <h1>Interactive Cryosphere Maps</h1>
+  <div class="maps-container">
+
+    <div class="map-box" id="arctic-box">
+      <div class="map-title">Arctic Sea Ice</div>
+      <div id="arctic-map" style="width:100%; height:350px;"></div>
+      <div class="scale-location" id="arctic-scale"></div>
+      <div class="feature-info" id="arctic-info"><em>Click on the map to get feature info</em></div>
+    </div>
+
+    <div class="map-box" id="antarctic-box">
+      <div class="map-title">Antarctic Sea Ice</div>
+      <div id="antarctic-map" style="width:100%; height:350px;"></div>
+      <div class="scale-location" id="antarctic-scale"></div>
+      <div class="feature-info" id="antarctic-info"><em>Click on the map to get feature info</em></div>
+    </div>
+
+    <div class="map-box" id="greenland-box">
+      <div class="map-title">Greenland Ice Velocity</div>
+      <div id="greenland-map" style="width:100%; height:350px;"></div>
+      <div class="scale-location" id="greenland-scale"></div>
+      <div class="feature-info" id="greenland-info"><em>Click on the map to get feature info</em></div>
+    </div>
+
+  </div>
+
+  <iframe class="greenland-tool" src="https://nsidc.org/data/tools/greenland/"></iframe>
+
+  <script>
+    function createMap(targetId, wmsLayer, bounds, projectionCode, scaleId, infoId) {
+      var projection = new ol.proj.Projection({ code: projectionCode, units: 'm', axisOrientation: 'neu', global: false });
+      var mousePositionControl = new ol.control.MousePosition({
+        className: 'custom-mouse-position',
+        target: document.getElementById(scaleId),
+        coordinateFormat: ol.coordinate.createStringXY(5),
+        undefinedHTML: '&nbsp;'
+      });
+      var untiled = new ol.layer.Image({ source: new ol.source.ImageWMS({
+        ratio: 1,
+        url: 'https://nsidc.org/api/mapservices/NSIDC/wms',
+        params: { 'FORMAT': 'image/jpeg', 'VERSION': '1.1.1', 'LAYERS': wmsLayer, 'STYLES': '', 'exceptions': 'application/vnd.ogc.se_inimage' }
+      })});
+      var tiled = new ol.layer.Tile({ visible: false, source: new ol.source.TileWMS({
+        url: 'https://nsidc.org/api/mapservices/NSIDC/wms',
+        params: { 'FORMAT': 'image/jpeg', 'VERSION': '1.1.1', 'LAYERS': wmsLayer, 'STYLES': '', 'tiled': true, 'exceptions': 'application/vnd.ogc.se_inimage', 'tilesOrigin': bounds[0] + "," + bounds[1] }
+      })});
+      var map = new ol.Map({
+        controls: ol.control.defaults({ attribution: false }).extend([mousePositionControl]),
+        target: targetId,
+        layers: [untiled, tiled],
+        view: new ol.View({ projection: projection })
+      });
+      map.getView().fit(bounds, map.getSize());
+      map.getView().on('change:resolution', function(evt) {
+        var resolution = evt.target.get('resolution');
+        var units = map.getView().getProjection().getUnits();
+        var dpi = 25.4 / 0.28;
+        var mpu = ol.proj.METERS_PER_UNIT[units];
+        var scale = resolution * mpu * 39.37 * dpi;
+        if (scale >= 9500 && scale <= 950000) { scale = Math.round(scale / 1000) + "K"; }
+        else if (scale >= 950000) { scale = Math.round(scale / 1000000) + "M"; }
+        else { scale = Math.round(scale); }
+        document.getElementById(scaleId).innerHTML = "Scale = 1 : " + scale;
+      });
+      map.on('singleclick', function(evt) {
+        document.getElementById(infoId).innerHTML = "Loading... please wait...";
+        var viewResolution = map.getView().getResolution();
+        var source = untiled.get('visible') ? untiled.getSource() : tiled.getSource();
+        var url = source.getGetFeatureInfoUrl(evt.coordinate, viewResolution, map.getView().getProjection(), { 'INFO_FORMAT': 'text/html', 'FEATURE_COUNT': 50 });
+        if (url) { document.getElementById(infoId).innerHTML = '<iframe seamless src="' + url + '"></iframe>'; }
+      });
+    }
+
+    createMap('arctic-map', 'NSIDC:nsidc_0051_raster_n', [-6931411.929201335, -6931411.929201335, 6931411.929201335, 6931411.929201335], 'EPSG:3413', 'arctic-scale', 'arctic-info');
+    createMap('antarctic-map', 'NSIDC:nsidc_0051_raster_s', [-3949233.62506143, -3949574.38763074, 3950766.37493857, 4350425.61236926], 'EPSG:3031', 'antarctic-scale', 'antarctic-info');
+    createMap('greenland-map', 'NSIDC:nsidc_0478_v2_measures_greenland_ice_sheet_vel', [-659100, -3379100, 857900, -639100], 'EPSG:3413', 'greenland-scale', 'greenland-info');
+  </script>
 
 </body>
 </html>
