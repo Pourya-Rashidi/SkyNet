@@ -3,14 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyNet Climate & Cryosphere Dashboard</title>
-   
+  <title>About SkyNet</title>
+
+
+<meta charset="UTF-8">
+  <link rel="stylesheet" href="https://nsidc.org/api/mapservices/openlayers3/ol.css" type="text/css">
+  <style>
+    body {
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size: small;
+      margin: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .maps-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .map-box {
+      flex: 1 1 32%;
+      border: 1px solid black;
+      position: relative;
+      min-width: 300px;
+    }
+    .map-title {
+      text-align: center;
+      font-weight: bold;
+      padding: 5px 0;
+      background: #f0f0f0;
+      border-bottom: 1px solid black;
+    }
+    #toolbar {
+      display: none;
+    }
+    .ol-zoom {
+      top: 52px;
+    }
+    .ol-toggle-options {
+      z-index: 1000;
+      background: rgba(255,255,255,0.4);
+      border-radius: 4px;
+      padding: 2px;
+      position: absolute;
+      left: 8px;
+      top: 8px;
+    }
+    iframe.greenland-tool {
+      width: 100%;
+      height: 680px;
+      border: 0;
+    }
+    .scale-location {
+      text-align: center;
+      margin: 5px 0;
+    }
+    .feature-info {
+      margin-top: 5px;
+      font-size: 0.9em;
+      text-align: center;
+    }
+  </style>
+  <script src="https://nsidc.org/api/mapservices/openlayers3/ol.js"></script>
+  <title>Global Cryosphere Status</title>
+
+  
   <!-- فونت‌ها -->
   <link href="https://fonts.googleapis.com/css2?family=Notable&family=Oldenburg&family=Michroma&display=swap" rel="stylesheet">
-
-  <!-- NSIDC OpenLayers -->
-  <link rel="stylesheet" href="https://nsidc.org/api/mapservices/openlayers3/ol.css" type="text/css">
-  <script src="https://nsidc.org/api/mapservices/openlayers3/ol.js"></script>
    
   <style>
     :root {
@@ -24,7 +87,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #f5f7fa;
+      background-color: #7a7a7c;
       color: #161618;
       font-family: var(--text-font);
       min-height: 100vh;
@@ -67,81 +130,40 @@
       color: #1dc9ff;
     }
 
-    h1, h2 {
-      text-align: center;
+    h1 {
+      font-size: var(--title-size);
       font-family: var(--title-font);
       color: #3b3b3f;
-      margin: 2rem 0 1rem;
-    }
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .card h2 {
-      background: #457b9d;
-      color: white;
-      font-size: 1.1rem;
-      margin: 0;
-      padding: 10px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-
-    /* NSIDC Maps Styles */
-    .maps-container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .map-box {
-      flex: 1 1 32%;
-      border: 1px solid black;
-      position: relative;
-      min-width: 300px;
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .map-title {
       text-align: center;
-      font-weight: bold;
-      padding: 5px 0;
-      background: #f0f0f0;
-      border-bottom: 1px solid black;
+      margin: 2rem 0 1.5rem;
+      letter-spacing: 1.5px;
     }
-    .scale-location, .feature-info {
-      text-align: center;
-      margin: 5px 0;
-      font-size: 0.9em;
+
+    .about-text {
+      font-family: var(--text-font);
+      font-size: var(--text-size);
+      line-height: 1.9;
+      letter-spacing: 0.3px;
+      text-align: justify;
+      text-align-last: center;
+      direction: ltr;
+      padding: 0 3rem;
     }
-    iframe.greenland-tool {
-      width: 100%;
-      height: 680px;
-      border: 0;
-      margin-bottom: 30px;
+
+    .about-text p {
+      margin-bottom: 1.4rem;
+      text-indent: 2em;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 800px) {
@@ -151,6 +173,7 @@
         padding: 1rem;
         align-items: flex-start;
       }
+
       .navbar .nav-links {
         margin-top: 0.5rem;
         display: flex;
@@ -159,9 +182,59 @@
       }
     }
   </style>
+
+
+
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate & Emissions Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f5f7fa;
+        color: #333;
+    }
+    h1 {
+        text-align: center;
+        padding: 20px;
+        background: #1d3557;
+        color: white;
+        margin: 0;
+    }
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+        background: #457b9d;
+        color: white;
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 10px;
+    }
+    iframe {
+        width: 100%;
+        height: 400px;
+        border: none;
+    }
+</style>
+
+  
+
+
+  
 </head>
 <body>
-
   <!-- نوار بالا -->
   <div class="navbar">
     <div class="logo">SkyNet</div>
@@ -176,9 +249,13 @@
     </div>
   </div>
 
-  <!-- داشبورد اصلی اقلیم -->
-  <h1>Global Climate & Emissions Dashboard</h1>
-  <div class="dashboard">
+  <!-- محتوای اصلی -->
+
+	
+
+<h1>Global Climate & Emissions Dashboard</h1>
+
+<div class="dashboard">
 
     <div class="card">
         <h2>Global Temperature Anomaly</h2>
@@ -215,48 +292,14 @@
         <iframe src="https://ourworldindata.org/grapher/annual-co2-emissions-per-country?tab=map" loading="lazy" allow="web-share; clipboard-write"></iframe>
     </div>
 
-  </div>
+</div>
 
-  <!-- داشبورد وضعیت یخ‌ها -->
-  <h1>Earth Ice & Cryosphere Status</h1>
-  <div class="dashboard">
 
-    <div class="card">
-        <h2>Global Glacier Mass Balance</h2>
-        <iframe src="https://ourworldindata.org/grapher/glaciers-mass-balance?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
+   <h2>Global Cryosphere Status</h2>
 
-    <div class="card">
-        <h2>Arctic Sea Ice Extent</h2>
-        <iframe src="https://ourworldindata.org/grapher/arctic-sea-ice-extent?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="card">
-        <h2>Antarctic Sea Ice Extent</h2>
-        <iframe src="https://ourworldindata.org/grapher/antarctic-sea-ice-extent?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="card">
-        <h2>Greenland Ice Sheet Mass</h2>
-        <iframe src="https://ourworldindata.org/grapher/greenland-ice-sheet-mass?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="card">
-        <h2>Antarctic Ice Sheet Mass</h2>
-        <iframe src="https://ourworldindata.org/grapher/antarctic-ice-sheet-mass?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-    <div class="card">
-        <h2>Global Ice Loss Trends</h2>
-        <iframe src="https://ourworldindata.org/grapher/global-ice-loss?tab=chart" loading="lazy" allow="web-share; clipboard-write"></iframe>
-    </div>
-
-  </div>
-
-  <!-- نقشه‌های تعاملی NSIDC -->
-  <h1>Interactive Cryosphere Maps</h1>
   <div class="maps-container">
 
+    <!-- Arctic -->
     <div class="map-box" id="arctic-box">
       <div class="map-title">Arctic Sea Ice</div>
       <div id="arctic-map" style="width:100%; height:350px;"></div>
@@ -264,6 +307,7 @@
       <div class="feature-info" id="arctic-info"><em>Click on the map to get feature info</em></div>
     </div>
 
+    <!-- Antarctic -->
     <div class="map-box" id="antarctic-box">
       <div class="map-title">Antarctic Sea Ice</div>
       <div id="antarctic-map" style="width:100%; height:350px;"></div>
@@ -271,6 +315,7 @@
       <div class="feature-info" id="antarctic-info"><em>Click on the map to get feature info</em></div>
     </div>
 
+    <!-- Greenland -->
     <div class="map-box" id="greenland-box">
       <div class="map-title">Greenland Ice Velocity</div>
       <div id="greenland-map" style="width:100%; height:350px;"></div>
@@ -280,33 +325,51 @@
 
   </div>
 
+  <!-- Greenland tool iframe -->
   <iframe class="greenland-tool" src="https://nsidc.org/data/tools/greenland/"></iframe>
 
   <script>
+    // تابع عمومي براي ايجاد نقشه‌ها
     function createMap(targetId, wmsLayer, bounds, projectionCode, scaleId, infoId) {
-      var projection = new ol.proj.Projection({ code: projectionCode, units: 'm', axisOrientation: 'neu', global: false });
+      var projection = new ol.proj.Projection({
+        code: projectionCode,
+        units: 'm',
+        axisOrientation: 'neu',
+        global: false
+      });
+
       var mousePositionControl = new ol.control.MousePosition({
         className: 'custom-mouse-position',
         target: document.getElementById(scaleId),
         coordinateFormat: ol.coordinate.createStringXY(5),
         undefinedHTML: '&nbsp;'
       });
-      var untiled = new ol.layer.Image({ source: new ol.source.ImageWMS({
-        ratio: 1,
-        url: 'https://nsidc.org/api/mapservices/NSIDC/wms',
-        params: { 'FORMAT': 'image/jpeg', 'VERSION': '1.1.1', 'LAYERS': wmsLayer, 'STYLES': '', 'exceptions': 'application/vnd.ogc.se_inimage' }
-      })});
-      var tiled = new ol.layer.Tile({ visible: false, source: new ol.source.TileWMS({
-        url: 'https://nsidc.org/api/mapservices/NSIDC/wms',
-        params: { 'FORMAT': 'image/jpeg', 'VERSION': '1.1.1', 'LAYERS': wmsLayer, 'STYLES': '', 'tiled': true, 'exceptions': 'application/vnd.ogc.se_inimage', 'tilesOrigin': bounds[0] + "," + bounds[1] }
-      })});
+
+      var untiled = new ol.layer.Image({
+        source: new ol.source.ImageWMS({
+          ratio: 1,
+          url: 'https://nsidc.org/api/mapservices/NSIDC/wms',
+          params: { 'FORMAT': 'image/jpeg', 'VERSION': '1.1.1', 'LAYERS': wmsLayer, 'STYLES': '', 'exceptions': 'application/vnd.ogc.se_inimage' }
+        })
+      });
+
+      var tiled = new ol.layer.Tile({
+        visible: false,
+        source: new ol.source.TileWMS({
+          url: 'https://nsidc.org/api/mapservices/NSIDC/wms',
+          params: { 'FORMAT': 'image/jpeg', 'VERSION': '1.1.1', 'LAYERS': wmsLayer, 'STYLES': '', 'tiled': true, 'exceptions': 'application/vnd.ogc.se_inimage', 'tilesOrigin': bounds[0] + "," + bounds[1] }
+        })
+      });
+
       var map = new ol.Map({
         controls: ol.control.defaults({ attribution: false }).extend([mousePositionControl]),
         target: targetId,
         layers: [untiled, tiled],
         view: new ol.View({ projection: projection })
       });
+
       map.getView().fit(bounds, map.getSize());
+
       map.getView().on('change:resolution', function(evt) {
         var resolution = evt.target.get('resolution');
         var units = map.getView().getProjection().getUnits();
@@ -318,19 +381,23 @@
         else { scale = Math.round(scale); }
         document.getElementById(scaleId).innerHTML = "Scale = 1 : " + scale;
       });
+
       map.on('singleclick', function(evt) {
         document.getElementById(infoId).innerHTML = "Loading... please wait...";
         var viewResolution = map.getView().getResolution();
         var source = untiled.get('visible') ? untiled.getSource() : tiled.getSource();
         var url = source.getGetFeatureInfoUrl(evt.coordinate, viewResolution, map.getView().getProjection(), { 'INFO_FORMAT': 'text/html', 'FEATURE_COUNT': 50 });
-        if (url) { document.getElementById(infoId).innerHTML = '<iframe seamless src="' + url + '"></iframe>'; }
+        if (url) {
+          document.getElementById(infoId).innerHTML = '<iframe seamless src="' + url + '"></iframe>';
+        }
       });
     }
 
+    // ايجاد نقشه‌ها
     createMap('arctic-map', 'NSIDC:nsidc_0051_raster_n', [-6931411.929201335, -6931411.929201335, 6931411.929201335, 6931411.929201335], 'EPSG:3413', 'arctic-scale', 'arctic-info');
     createMap('antarctic-map', 'NSIDC:nsidc_0051_raster_s', [-3949233.62506143, -3949574.38763074, 3950766.37493857, 4350425.61236926], 'EPSG:3031', 'antarctic-scale', 'antarctic-info');
     createMap('greenland-map', 'NSIDC:nsidc_0478_v2_measures_greenland_ice_sheet_vel', [-659100, -3379100, 857900, -639100], 'EPSG:3413', 'greenland-scale', 'greenland-info');
   </script>
-
+  
 </body>
 </html>
